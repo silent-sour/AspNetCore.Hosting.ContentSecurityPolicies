@@ -16,7 +16,7 @@
 	<AssemblyVersion>1.0.0.0</AssemblyVersion>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-	<IncludeSymbols>False</IncludeSymbols>
+	<IncludeSymbols>True</IncludeSymbols>
 	<EnableNETAnalyzers>True</EnableNETAnalyzers>
 	<AnalysisLevel>latest-recommended</AnalysisLevel>
 	<Authors>Annabelle Horch</Authors>
@@ -24,6 +24,7 @@
 	<NeutralLanguage>en-US</NeutralLanguage>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 	<PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
