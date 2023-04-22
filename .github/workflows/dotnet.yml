@@ -25,9 +25,13 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       id: restore
+      with:
+        working-directory: ./src/
       run: dotnet restore
     - name: Build
       id: build
+      with:
+        working-directory: ./src/
       run: dotnet build --no-restore
 
   test:
@@ -37,6 +41,8 @@ jobs:
     steps:
     - name: Test
       id: test
+      with:
+        working-directory: ./src/
       run: dotnet test --no-build --verbosity normal
 
   release:
@@ -46,6 +52,8 @@ jobs:
     steps:
     - name: Build solution and generate NuGet package
       id: package-build
+      with:
+        working-directory: ./src/
       run: |  
         cd ./src/
         dotnet pack -c Release -o out
