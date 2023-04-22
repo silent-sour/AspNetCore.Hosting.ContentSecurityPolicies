@@ -1,6 +1,8 @@
 name: "Build, test, pack, and release to NuGet"
 
 on:
+  
+  workflow_dispatch:
   push:
     branches: [ "main"]
 
