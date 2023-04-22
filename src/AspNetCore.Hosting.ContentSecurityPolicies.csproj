@@ -8,7 +8,7 @@
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<Title>ASP.NET Content Security Middleware</Title>
 	<Description>A simple ASP.NET Content Security Middleware</Description>
-	<Copyright>©2023 Horch, Annabelle</Copyright>
+	<Copyright>©2023 Annabelle Horch</Copyright>
 	<PackageProjectUrl></PackageProjectUrl>
 	<PackageIcon>security-icon.png</PackageIcon>
 	<RepositoryUrl>https://github.com/lodrial/AspNetCore.Hosting.ContentSecurityPolicies</RepositoryUrl>
@@ -19,9 +19,11 @@
 	<IncludeSymbols>False</IncludeSymbols>
 	<EnableNETAnalyzers>True</EnableNETAnalyzers>
 	<AnalysisLevel>latest-recommended</AnalysisLevel>
-	<Authors>Horch, Annabelle</Authors>
+	<Authors>Annabelle Horch</Authors>
 	<PackageTags>Content Security Policy;CSP</PackageTags>
 	<NeutralLanguage>en-US</NeutralLanguage>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageReleaseNotes>Initial Release</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,6 +35,13 @@
 	  <Pack>True</Pack>
 	  <PackagePath>\</PackagePath>
 	</EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+	<None Include="..\README.md">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
   </ItemGroup>
 
   <ItemGroup>
