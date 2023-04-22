@@ -39,8 +39,7 @@ jobs:
       uses: edumserrano/nuget-push@v1.2.2
       with:
         api-key: ${{ env.NUGET_API_KEY }}
-        nuget-package: '*.nupkg'
-        symbols-package: '*.snupkg'
+        working-directory: ./src/bin/Release/
 
     - name: Log output
       id: log-output
