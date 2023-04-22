@@ -27,10 +27,10 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             builder.WithMediaSource();
             builder.WithObjectSource();
             builder.WithScriptAttributeSource();
-            builder.WithScriptElemntsSource();
+            builder.WithScriptElementsSource();
             builder.WithScriptSource();
             builder.WithStyleAttributeSource();
-            builder.WithStyleElemntsSource();
+            builder.WithStyleElementsSource();
             builder.WithStyleSource();
             var policy = builder.BuildPolicy();
             Assert.NotNull(policy);
@@ -61,7 +61,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             Assert.NotNull(policy);
             Assert.Contains(ContentSecurityPolicyResources.Self, policy.ScriptSrcAttr);
 
-            builder.WithScriptElemntsSource(ContentSecurityPolicyResources.Self);
+            builder.WithScriptElementsSource(ContentSecurityPolicyResources.Self);
             policy = builder.BuildPolicy();
             Assert.NotNull(policy);
             Assert.Contains(ContentSecurityPolicyResources.Self, policy.ScriptSrcElem);
@@ -82,7 +82,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             Assert.NotNull(policy);
             Assert.Contains(ContentSecurityPolicyResources.Self, policy.StyleSrcAttr);
 
-            builder.WithStyleElemntsSource(ContentSecurityPolicyResources.Self);
+            builder.WithStyleElementsSource(ContentSecurityPolicyResources.Self);
             policy = builder.BuildPolicy();
             Assert.NotNull(policy);
             Assert.Contains(ContentSecurityPolicyResources.Self, policy.StyleSrcAttr);
