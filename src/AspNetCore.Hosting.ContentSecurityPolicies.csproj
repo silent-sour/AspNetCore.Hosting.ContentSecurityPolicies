@@ -5,7 +5,7 @@
 	<ImplicitUsings>enable</ImplicitUsings>
 	<Nullable>enable</Nullable>
 	<ImplicitUsings>disable</ImplicitUsings>
-	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 	<Title>ASP.NET Content Security Middleware</Title>
 	<Description>A simple ASP.NET Content Security Middleware</Description>
 	<Copyright>©2023 Annabelle Horch</Copyright>
