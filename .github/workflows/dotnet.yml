@@ -25,11 +25,11 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       id: restore
-      working-directory: ./src/
+      working-directory: src/
       run: dotnet restore
     - name: Build
       id: build
-      working-directory: ./src/
+      working-directory: src/
       run: dotnet build --no-restore
 
   test:
@@ -39,7 +39,7 @@ jobs:
     steps:
     - name: Test
       id: test
-      working-directory: ./src/
+      working-directory: src/
       run: dotnet test --no-build --verbosity normal
 
   release:
@@ -49,9 +49,9 @@ jobs:
     steps:
     - name: Build solution and generate NuGet package
       id: package-build
-      working-directory: ./src/
+      working-directory: src/
       run: |  
-        cd ./src/
+        cd src/
         dotnet pack -c Release -o out
 
     - name: NuGet push
@@ -59,7 +59,7 @@ jobs:
       uses: edumserrano/nuget-push@v1.2.2
       with:
         api-key: ${{ secrets.NUGET_API_KEY }}
-        working-directory: ./src/out/
+        working-directory: src/out/
         nuget-package: '*.nupkg'
         symbols-package: '*.snupkg'
 
