@@ -1,5 +1,8 @@
 ﻿using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
 
+using System;
+using System.Text;
+
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
 {
     public static class PolicyConstantBuilder
@@ -9,9 +12,9 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// </summary>
         /// <param name="base64Value"></param>
         /// <returns></returns>
-        public static string Nonce(string base64Value)
+        public static string Nonce(ReadOnlySpan<char> base64Value)
         {
-            return ContentSecurityPolicyResources.NonceHyphen + base64Value;
+            return JoinSpans(ContentSecurityPolicyResources.NonceHyphen, base64Value);
         }
 
         /// <summary>
@@ -19,9 +22,9 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
-        public static string Sha256(string hash)
+        public static string Sha256(ReadOnlySpan<char> hash)
         {
-            return ContentSecurityPolicyResources.Sha256 + hash;
+            return JoinSpans(ContentSecurityPolicyResources.Sha256, hash);
         }
 
         /// <summary>
@@ -29,9 +32,9 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
-        public static string Sha384(string hash)
+        public static string Sha384(ReadOnlySpan<char> hash)
         {
-            return ContentSecurityPolicyResources.Sha384 + hash;
+            return JoinSpans(ContentSecurityPolicyResources.Sha384, hash);
         }
 
         /// <summary>
@@ -39,9 +42,14 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
-        public static string Sha512(string hash)
+        public static string Sha512(ReadOnlySpan<char> hash)
         {
-            return ContentSecurityPolicyResources.Sha512 + hash;
+            return JoinSpans(ContentSecurityPolicyResources.Sha512, hash);
+        }
+
+        private static string JoinSpans(ReadOnlySpan<char> encodingSpan, ReadOnlySpan<char> valueSpan)
+        {
+            return new StringBuilder().Append(encodingSpan).Append(valueSpan).ToString();
         }
     }
 }
