@@ -3,6 +3,6 @@
     public class AllowTopNaviation : BaseSandboxOption
     {
         internal AllowTopNaviation() { }
-        public override string Value => "allow-top-navigation";
+        public override string Value { get; internal set; } = "allow-top-navigation";
     }
 }

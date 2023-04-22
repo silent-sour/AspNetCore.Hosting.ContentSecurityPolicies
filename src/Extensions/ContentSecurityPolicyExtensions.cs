@@ -4,6 +4,7 @@ using AspNetCore.Hosting.ContentSecurityPolicies.Middleware;
 using Microsoft.AspNetCore.Builder;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Extensions
 {
@@ -15,14 +16,10 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Extensions
         /// <param name="app"></param>
         /// <param name="builder"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseContentSecurityPolicy(this IApplicationBuilder app, Action<ContentSecurityPolicyBuilder> configurePolicy)
+        public static IApplicationBuilder UseContentSecurityPolicy(
+            [NotNull] this IApplicationBuilder app, 
+            [NotNull] Action<ContentSecurityPolicyBuilder> configurePolicy)
         {
-            if (app == null)
-                throw new ArgumentNullException(nameof(app));
-
-            if (configurePolicy == null)
-                throw new ArgumentNullException(nameof(configurePolicy));
-
             var builder = new ContentSecurityPolicyBuilder();
             configurePolicy(builder);
             return app.UseMiddleware<ContentSecurityPolicyMiddleware>(builder.BuildPolicy());

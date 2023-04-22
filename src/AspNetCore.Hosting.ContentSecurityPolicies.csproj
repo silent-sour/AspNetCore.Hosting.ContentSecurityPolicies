@@ -5,7 +5,7 @@
 	<ImplicitUsings>enable</ImplicitUsings>
 	<Nullable>enable</Nullable>
 	<ImplicitUsings>disable</ImplicitUsings>
-	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 	<Title>ASP.NET Content Security Middleware</Title>
 	<Description>A simple ASP.NET Content Security Middleware</Description>
 	<Copyright>©2023 Annabelle Horch</Copyright>
@@ -16,7 +16,7 @@
 	<AssemblyVersion>1.0.0.0</AssemblyVersion>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-	<IncludeSymbols>False</IncludeSymbols>
+	<IncludeSymbols>True</IncludeSymbols>
 	<EnableNETAnalyzers>True</EnableNETAnalyzers>
 	<AnalysisLevel>latest-recommended</AnalysisLevel>
 	<Authors>Annabelle Horch</Authors>
@@ -24,6 +24,7 @@
 	<NeutralLanguage>en-US</NeutralLanguage>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 	<PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
@@ -47,5 +48,9 @@
   <ItemGroup>
 	<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
   </ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="AspNetCore.Hosting.ContentSecurityPolicies.Test" />
+	</ItemGroup>
 
 </Project>

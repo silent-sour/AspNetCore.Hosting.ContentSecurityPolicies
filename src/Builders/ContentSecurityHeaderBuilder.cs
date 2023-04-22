@@ -12,8 +12,6 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         public static string Build(ContentSecurityPolicy policy)
         {
             var stringBuilder = new StringBuilder();
-            if (policy == null)
-                throw new ArgumentNullException(nameof(policy));
             TryAddPolicySource(policy.DefaultSrc, CspDirectiveResources.DefaultSrc, stringBuilder);
             TryAddPolicySource(policy.ScriptSrc, CspDirectiveResources.ScriptSrc, stringBuilder);
             TryAddPolicySource(policy.StyleSrc, CspDirectiveResources.StyleSrc, stringBuilder);
@@ -32,13 +30,16 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
             TryAddPolicySource(policy.WorkerSrc, CspDirectiveResources.WorkerSource, stringBuilder);
             TryAddSandbox(policy, stringBuilder);
             if (policy.UpgradeInsecureRequests)
+            {
                 stringBuilder.Append($"{CspDirectiveResources.UpgradeInsecureRequests}; ");
+            }
+
             return stringBuilder.ToString().TrimEnd();
         }
 
         private static void TryAddPolicySource(HashSet<string> policySource, string cspHeaderValue, StringBuilder builder)
         {
-            if (policySource != null && policySource.Count > 0)
+            if (policySource.Count > 0)
             {
                 builder.Append(cspHeaderValue);
                 builder.Append($" {string.Join(" ", policySource)}; ");

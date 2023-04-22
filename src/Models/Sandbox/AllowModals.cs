@@ -1,8 +1,8 @@
 ﻿namespace AspNetCore.Hosting.ContentSecurityPolicies.Models.Sandbox
 {
-    public class AllowModals : BaseSandboxOption
+    public class AllowModals : SandboxOption
     {
         internal AllowModals() { }
-        public override string Value => "allow-modals";
+        public override string Value { get; internal set; } = "allow-modals";
     }
 }

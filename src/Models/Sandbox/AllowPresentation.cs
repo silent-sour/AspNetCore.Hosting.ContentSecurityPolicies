@@ -1,8 +1,8 @@
 ﻿namespace AspNetCore.Hosting.ContentSecurityPolicies.Models.Sandbox
 {
-    public class AllowPresentation : BaseSandboxOption
+    public class AllowPresentation : SandboxOption
     {
         internal AllowPresentation() { }
-        public override string Value => "allow-presentation";
+        public override string Value { get; internal set; } = "allow-presentation";
     }
 }

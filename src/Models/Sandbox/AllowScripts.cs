@@ -3,6 +3,6 @@
     public class AllowScripts : BaseSandboxOption
     {
         internal AllowScripts() { }
-        public override string Value => "allow-scripts";
+        public override string Value { get; internal set; } = "allow-scripts";
     }
 }

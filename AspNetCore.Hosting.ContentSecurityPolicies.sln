@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Hosting.ContentSecurityPolicies", "src\AspNetCore.Hosting.ContentSecurityPolicies.csproj", "{05F75222-C03D-414D-B38B-B7C97ED4A4FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Hosting.ContentSecurityPolicies.Test", "test\AspNetCore.Hosting.ContentSecurityPolicies.Test\AspNetCore.Hosting.ContentSecurityPolicies.Test.csproj", "{C7A7934D-F72E-4189-9512-C61D7F4C98A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{05F75222-C03D-414D-B38B-B7C97ED4A4FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F75222-C03D-414D-B38B-B7C97ED4A4FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05F75222-C03D-414D-B38B-B7C97ED4A4FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7A7934D-F72E-4189-9512-C61D7F4C98A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7A7934D-F72E-4189-9512-C61D7F4C98A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7A7934D-F72E-4189-9512-C61D7F4C98A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7A7934D-F72E-4189-9512-C61D7F4C98A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

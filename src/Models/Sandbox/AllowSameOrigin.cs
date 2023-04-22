@@ -3,6 +3,6 @@
     public class AllowSameOrigin : BaseSandboxOption
     {
         internal AllowSameOrigin() { }
-        public override string Value => "allow-same-origin";
+        public override string Value { get; internal set; } = "allow-same-origin";
     }
 }
