@@ -26,9 +26,35 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+        
     - name: Build .NET Library
       id: build
       uses: Elskom/build-dotnet@v1.1.1
       with:
         TEST: true
         PUSH: true
+        
+    - name: NuGet push
+      id: nuget-push
+      uses: edumserrano/nuget-push@v1.2.2
+      with:
+        api-key: ${{ env.NUGET_API_KEY }}
+        nuget-package: '*.nupkg'
+        symbols-package: '*.snupkg'
+
+    - name: Log output
+      id: log-output
+      if: steps.nuget-push.conclusion != 'skipped' && always() # run regardless if the previous step failed or not, just as long as it wasn't skipped
+      shell: pwsh
+      run: |
+        $pushResult = '${{ steps.nuget-push.outputs.push-result }}' | ConvertFrom-Json
+        $pushResultAsJsonIndented = ConvertTo-Json $pushResult
+        Write-Output $pushResultAsJsonIndented  # outputs the result of the nuget push operation as an indented JSON string
+        Write-Output '${{ steps.nuget-push.outputs.status }}' # outputs the overall status of the nuget push action
+
+        # since we only pushed one package/symbols there's no need to iterate the packages list
+        # there will only be one element in the array
+        $package = $pushResult.packages[0]
+        Write-Output "$($package.status)"  # outputs the status of the nuget push operation
+        Write-Output "$($package.package)" # outputs the NuGet package name that was pushed
+        Write-Output "$($package.symbols)" # outputs the symbols package name that was pushed
