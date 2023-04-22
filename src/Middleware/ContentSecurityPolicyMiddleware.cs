@@ -16,8 +16,6 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Middleware
 
         public ContentSecurityPolicyMiddleware(RequestDelegate next, ContentSecurityPolicy policy)
         {
-            if (policy == null)
-                throw new ArgumentNullException(nameof(policy));
             _policy = ContentSecurityHeaderBuilder.Build(policy);
             _next = next;
         }

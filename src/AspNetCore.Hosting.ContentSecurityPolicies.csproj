@@ -49,4 +49,8 @@
 	<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
+	<ItemGroup>
+		<InternalsVisibleTo Include="AspNetCore.Hosting.ContentSecurityPolicies.Test" />
+	</ItemGroup>
+
 </Project>

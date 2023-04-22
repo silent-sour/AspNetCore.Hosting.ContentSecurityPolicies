@@ -69,6 +69,14 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Models
         /// </summary>
         public HashSet<string> ScriptSrc { get; set; } = new HashSet<string>();
         /// <summary>
+        /// Defines valid sources for JavaScript inline event handlers.
+        /// </summary>
+        public HashSet<string> ScriptSrcAttr { get;set; } = new HashSet<string>();
+        /// <summary>
+        /// Defines valid sources for JavaScript <script> elements.
+        /// </summary>
+        public HashSet<string> ScriptSrcElem { get; set; } = new HashSet<string>();
+        /// <summary>
         /// Defines valid sources of plugins, eg <object>, <embed> or <applet>. 
         /// </summary>
         public HashSet<string> ObjectSrc { get; set; } = new HashSet<string>();

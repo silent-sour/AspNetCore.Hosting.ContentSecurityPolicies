@@ -17,9 +17,10 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithDefaultSource(params string[] sources)
         {
-            if (sources == null || sources.Length < 1)
-                throw new ArgumentException(null, nameof(sources));
-            Policy.DefaultSrc.UnionWith(sources);
+            if (sources.Length > 0)
+            {
+                Policy.DefaultSrc.UnionWith(sources);
+            }
             return this;
         }
 
@@ -30,9 +31,38 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithScriptSource(params string[] sources)
         {
-            if (sources == null || sources.Length < 1)
-                throw new ArgumentException(null, nameof(sources));
-            Policy.ScriptSrc.UnionWith(sources);
+            if (sources.Length > 0)
+            {
+                Policy.ScriptSrc.UnionWith(sources);
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Defines valid sources of styles for inline event handlers. 
+        /// </summary>
+        /// <param name="souces"></param>
+        /// <returns></returns>
+        public ContentSecurityPolicyBuilder WithScriptAttributeSource(params string[] sources)
+        {
+            if (sources.Length > 0)
+            {
+                Policy.ScriptSrcAttr.UnionWith(sources);
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Defines valid sources of styles for script elements. 
+        /// </summary>
+        /// <param name="souces"></param>
+        /// <returns></returns>
+        public ContentSecurityPolicyBuilder WithScriptElemntsSource(params string[] sources)
+        {
+            if (sources.Length > 0)
+            {
+                Policy.ScriptSrcElem.UnionWith(sources);
+            }
             return this;
         }
 
@@ -43,9 +73,38 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithStyleSource(params string[] sources)
         {
-            if (sources == null || sources.Length < 1)
-                throw new ArgumentException(null, nameof(sources));
-            Policy.StyleSrc.UnionWith(sources);
+            if(sources.Length > 0)
+            {
+                Policy.StyleSrc.UnionWith(sources);
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Defines valid sources of styles for inline event handlers. 
+        /// </summary>
+        /// <param name="souces"></param>
+        /// <returns></returns>
+        public ContentSecurityPolicyBuilder WithStyleAttributeSource(params string[] sources)
+        {
+            if (sources.Length > 0)
+            {
+                Policy.StyleSrcAttr.UnionWith(sources);
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Defines valid sources for stylesheet <style> elements and <link> elements with rel="stylesheet". 
+        /// </summary>
+        /// <param name="souces"></param>
+        /// <returns></returns>
+        public ContentSecurityPolicyBuilder WithStyleElemntsSource(params string[] sources)
+        {
+            if (sources.Length > 0)
+            {
+                Policy.StyleSrcElem.UnionWith(sources);
+            }
             return this;
         }
 
@@ -56,9 +115,10 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithImageSource(params string[] sources)
         {
-            if (sources == null || sources.Length < 1)
-                throw new ArgumentException(null, nameof(sources));
-            Policy.ImgSrc.UnionWith(sources);
+            if (sources.Length > 0)
+            {
+                Policy.ImgSrc.UnionWith(sources);
+            }
             return this;
         }
 
@@ -69,9 +129,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithConnectSource(params string[] sources)
         {
-            if (sources == null || sources.Length < 1)
-                throw new ArgumentException(null, nameof(sources));
-            Policy.ConnectSrc.UnionWith(sources);
+            if (sources.Length > 0)
+            {
+                Policy.ConnectSrc.UnionWith(sources);
+            }
+
             return this;
         }
 
@@ -82,9 +144,10 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithFontSource(params string[] sources)
         {
-            if (sources == null || sources.Length < 1)
-                throw new ArgumentException(null, nameof(sources));
-            Policy.FontSrc.UnionWith(sources);
+            if (sources.Length > 0)
+            {
+                Policy.FontSrc.UnionWith(sources);
+            }
             return this;
         }
 
@@ -95,9 +158,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithObjectSource(params string[] sources)
         {
-            if (sources == null || sources.Length < 1)
-                throw new ArgumentException(null, nameof(sources));
-            Policy.ObjectSrc.UnionWith(sources);
+            if (sources.Length > 0)
+            {
+                Policy.ObjectSrc.UnionWith(sources);
+            }
+
             return this;
         }
 
@@ -108,9 +173,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithMediaSource(params string[] sources)
         {
-            if (sources == null || sources.Length < 1)
-                throw new ArgumentException(null, nameof(sources));
-            Policy.MediaSrc.UnionWith(sources);
+            if (sources.Length > 0)
+            {
+                Policy.MediaSrc.UnionWith(sources);
+            }
+
             return this;
         }
 
@@ -120,9 +187,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithChildSource(params string[] sources)
         {
-            if (sources == null || sources.Length < 1)
-                throw new ArgumentException(null, nameof(sources));
-            Policy.ChildSrc.UnionWith(sources);
+            if (sources.Length > 0)
+            {
+                Policy.ChildSrc.UnionWith(sources);
+            }
+
             return this;
         }
 
@@ -133,9 +202,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithFormAction(params string[] sources)
         {
-            if (sources == null || sources.Length < 1)
-                throw new ArgumentException(null, nameof(sources));
-            Policy.FormAction.UnionWith(sources);
+            if (sources.Length > 0)
+            {
+                Policy.FormAction.UnionWith(sources);
+            }
+
             return this;
         }
 
@@ -146,9 +217,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithFrameAncestors(params string[] sources)
         {
-            if (sources == null || sources.Length < 1)
-                throw new ArgumentException(null, nameof(sources));
-            Policy.FrameAncestors.UnionWith(sources);
+            if (sources.Length > 0)
+            {
+                Policy.FrameAncestors.UnionWith(sources);
+            }
+
             return this;
         }
 
@@ -159,9 +232,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithFrameSource(params string[] sources)
         {
-            if (sources == null || sources.Length < 1)
-                throw new ArgumentException(null, nameof(sources));
-            Policy.FrameSrc.UnionWith(sources);
+            if (sources.Length > 0)
+            {
+                Policy.FrameSrc.UnionWith(sources);
+            }
+
             return this;
         }
 
@@ -172,7 +247,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithSandBox(BaseSandboxOption sandboxOption)
         {
-            Policy.Sandbox = sandboxOption ?? throw new ArgumentNullException(nameof(sandboxOption));
+            Policy.Sandbox = sandboxOption;
             return this;
         }
         public ContentSecurityPolicy BuildPolicy()
