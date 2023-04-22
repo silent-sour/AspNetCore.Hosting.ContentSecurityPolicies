@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFrameworks>netstandard2.1</TargetFrameworks>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<Nullable>enable</Nullable>
+	<ImplicitUsings>disable</ImplicitUsings>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<Title>ASP.NET Content Security Middleware</Title>
+	<Description>A simple ASP.NET Content Security Middleware</Description>
+	<Copyright>©2023 Horch, Annabelle</Copyright>
+	<PackageProjectUrl></PackageProjectUrl>
+	<PackageIcon>security-icon.png</PackageIcon>
+	<RepositoryUrl>https://github.com/lodrial/AspNetCore.Hosting.ContentSecurityPolicies</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<AssemblyVersion>1.0.0.0</AssemblyVersion>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	<IncludeSymbols>False</IncludeSymbols>
+	<EnableNETAnalyzers>True</EnableNETAnalyzers>
+	<AnalysisLevel>latest-recommended</AnalysisLevel>
+	<Authors>Horch, Annabelle</Authors>
+	<PackageTags>Content Security Policy;CSP</PackageTags>
+	<NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<None Remove="Resources\security-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<EmbeddedResource Include="Resources\security-icon.png">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+</Project>
