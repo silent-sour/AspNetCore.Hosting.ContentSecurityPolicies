@@ -159,6 +159,12 @@
   <data name="ScriptSrc" xml:space="preserve">
     <value>script-src</value>
   </data>
+  <data name="ScriptSrcAttr" xml:space="preserve">
+    <value>script-src-attr</value>
+  </data>
+  <data name="ScriptSrcElem" xml:space="preserve">
+    <value>script-src-elem</value>
+  </data>
   <data name="StyleSrc" xml:space="preserve">
     <value>style-src</value>
   </data>

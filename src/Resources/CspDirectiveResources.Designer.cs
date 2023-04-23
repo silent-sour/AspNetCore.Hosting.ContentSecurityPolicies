@@ -187,6 +187,24 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to script-src-attr.
+        /// </summary>
+        public static string ScriptSrcAttr {
+            get {
+                return ResourceManager.GetString("ScriptSrcAttr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to script-src-elem.
+        /// </summary>
+        public static string ScriptSrcElem {
+            get {
+                return ResourceManager.GetString("ScriptSrcElem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to style-src.
         /// </summary>
         public static string StyleSrc {
