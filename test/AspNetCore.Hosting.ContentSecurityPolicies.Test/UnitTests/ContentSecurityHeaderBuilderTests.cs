@@ -95,7 +95,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             Assert.Contains($"{CspDirectiveResources.Sandbox} {policy.Sandbox.Value};", header);
         }
 
-        internal static string BuildHeader(ContentSecurityPolicy policy)
+        public static string BuildHeader(ContentSecurityPolicy policy)
         {
             var header = ContentSecurityHeaderBuilder.Build(policy);
             Assert.NotNull(header);
