@@ -49,7 +49,10 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
 
         private static string JoinSpans(ReadOnlySpan<char> encodingSpan, ReadOnlySpan<char> valueSpan)
         {
-            return new StringBuilder().Append(encodingSpan).Append(valueSpan).ToString();
+            return new StringBuilder(encodingSpan.Length + valueSpan.Length)
+                .Append(encodingSpan)
+                .Append(valueSpan)
+                .ToString();
         }
     }
 }
