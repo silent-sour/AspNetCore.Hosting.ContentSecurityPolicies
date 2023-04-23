@@ -32,8 +32,8 @@ jobs:
       uses: Elskom/build-dotnet@v1.1.1
       with:
         TEST: true
-        PUSH: true
-        
+        PACK: true
+
     - name: NuGet push
       id: nuget-push
       uses: edumserrano/nuget-push@v1.2.2
