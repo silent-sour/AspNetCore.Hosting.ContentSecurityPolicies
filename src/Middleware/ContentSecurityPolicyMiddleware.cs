@@ -6,7 +6,7 @@ using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Middleware
@@ -28,15 +28,12 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Middleware
 
         public Task Invoke(HttpContext context)
         {
-            try
+            var added = context.Response.Headers.TryAdd(ContentSecurityPolicyResources.ContentSecurityPolicyHeader, _policyHeader);
+            if (!added)
             {
-                context.Response.Headers.Add(ContentSecurityPolicyResources.ContentSecurityPolicyHeader, _policyHeader);
+                ContentSecurityPolicyLogger.CouldNotAddResponseHeader(_logger);
             }
-            catch (Exception e)
-            {
-                ContentSecurityPolicyLogger.LogCouldNotAddResponseHeader(_logger, LogLevel.Information, e.Message);
-            }
-            return _next?.Invoke(context) ?? Task.CompletedTask;
+            return _next.Invoke(context);
         }
     }
 }
