@@ -32,13 +32,9 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Middleware
             {
                 context.Response.Headers.Add(ContentSecurityPolicyResources.ContentSecurityPolicyHeader, _policyHeader);
             }
-            catch (ArgumentException)
+            catch (Exception e)
             {
-                ContentSecurityPolicyLogger.LogCouldNotAddResponseHeader(_logger, LogLevel.Information);
-            }
-            catch (NotSupportedException)
-            {
-                ContentSecurityPolicyLogger.LogCouldNotAddResponseHeader(_logger, LogLevel.Information);
+                ContentSecurityPolicyLogger.LogCouldNotAddResponseHeader(_logger, LogLevel.Information, e.Message);
             }
             return _next?.Invoke(context) ?? Task.CompletedTask;
         }
