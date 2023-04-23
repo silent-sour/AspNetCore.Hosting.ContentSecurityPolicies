@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 using AspNetCore.Hosting.ContentSecurityPolicies.Models;
@@ -14,6 +15,8 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
             var stringBuilder = new StringBuilder();
             TryAddPolicySource(policy.DefaultSrc, CspDirectiveResources.DefaultSrc, stringBuilder);
             TryAddPolicySource(policy.ScriptSrc, CspDirectiveResources.ScriptSrc, stringBuilder);
+            TryAddPolicySource(policy.ScriptSrcAttr, CspDirectiveResources.ScriptSrcAttr, stringBuilder);
+            TryAddPolicySource(policy.ScriptSrcElem, CspDirectiveResources.ScriptSrcElem, stringBuilder);
             TryAddPolicySource(policy.StyleSrc, CspDirectiveResources.StyleSrc, stringBuilder);
             TryAddPolicySource(policy.StyleSrcAttr, CspDirectiveResources.StyleSrcAttr, stringBuilder);
             TryAddPolicySource(policy.StyleSrcElem, CspDirectiveResources.StyleSrcElem, stringBuilder);
@@ -29,20 +32,24 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
             TryAddPolicySource(policy.ManifestSrc, CspDirectiveResources.ManifestSource, stringBuilder);
             TryAddPolicySource(policy.WorkerSrc, CspDirectiveResources.WorkerSource, stringBuilder);
             TryAddSandbox(policy, stringBuilder);
-            if (policy.UpgradeInsecureRequests)
-            {
-                stringBuilder.Append($"{CspDirectiveResources.UpgradeInsecureRequests}; ");
-            }
+            TryUpgradeInsecureRequests(policy, stringBuilder);
 
             return stringBuilder.ToString().TrimEnd();
         }
 
-        private static void TryAddPolicySource(HashSet<string> policySource, string cspHeaderValue, StringBuilder builder)
+        private static void TryUpgradeInsecureRequests(ContentSecurityPolicy policy, StringBuilder stringBuilder)
+        {
+            if (policy.UpgradeInsecureRequests)
+            {
+                stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "{0}; ", CspDirectiveResources.UpgradeInsecureRequests);
+            }
+        }
+
+        private static void TryAddPolicySource(HashSet<string> policySource, string cspHeaderValue, StringBuilder stringBuilder)
         {
             if (policySource.Count > 0)
             {
-                builder.Append(cspHeaderValue);
-                builder.Append($" {string.Join(" ", policySource)}; ");
+                stringBuilder.AppendFormat(CultureInfo.InvariantCulture, " {0} {1}; ", cspHeaderValue, string.Join(" ", policySource));
             }
         }
 
@@ -50,8 +57,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         {
             if (policy.Sandbox != null)
             {
-                stringBuilder.Append(CspDirectiveResources.Sandbox);
-                stringBuilder.Append($" {policy.Sandbox.Value}; ");
+                stringBuilder.AppendFormat(CultureInfo.InvariantCulture, " {0} {1}; ", CspDirectiveResources.Sandbox, policy.Sandbox.Value);
             }
         }
     }
