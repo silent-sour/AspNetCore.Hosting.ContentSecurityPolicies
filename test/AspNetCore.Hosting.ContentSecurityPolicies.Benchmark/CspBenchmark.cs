@@ -8,8 +8,13 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.Benchmarks
 {
-    public static class CspBenchmark
+    public class CspBenchmark
     {
+        protected CspBenchmark()
+        {
+
+        }
+
         [Benchmark]
         [ExcludeFromCodeCoverage]
         public static string DefaultSelfPolicy()
