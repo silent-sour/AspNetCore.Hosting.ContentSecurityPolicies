@@ -14,7 +14,7 @@
 		<PackageIcon>security-icon.png</PackageIcon>
 		<RepositoryUrl>https://github.com/lodrial/AspNetCore.Hosting.ContentSecurityPolicies</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<AssemblyVersion>1.1.0.0</AssemblyVersion>
+		<AssemblyVersion>1.2.0.0</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -68,15 +68,15 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>ContentSecuritySourceResources.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\CspDirectiveResources.Designer.cs">
+	  <Compile Update="Resources\ContentSecurityDirectiveResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>CspDirectiveResources.resx</DependentUpon>
+	    <DependentUpon>ContentSecurityDirectiveResources.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\SchemaResources.Designer.cs">
+	  <Compile Update="Resources\ContentSecuritySchemaResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>SchemaResources.resx</DependentUpon>
+	    <DependentUpon>ContentSecuritySchemaResources.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -89,13 +89,13 @@
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	    <LastGenOutput>ContentSecuritySourceResources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\CspDirectiveResources.resx">
+	  <EmbeddedResource Update="Resources\ContentSecurityDirectiveResources.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>CspDirectiveResources.Designer.cs</LastGenOutput>
+	    <LastGenOutput>ContentSecurityDirectiveResources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\SchemaResources.resx">
+	  <EmbeddedResource Update="Resources\ContentSecuritySchemaResources.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>SchemaResources.Designer.cs</LastGenOutput>
+	    <LastGenOutput>ContentSecuritySchemaResources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
 

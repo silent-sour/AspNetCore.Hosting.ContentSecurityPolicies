@@ -13,24 +13,24 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         public static string Build([NotNull] ContentSecurityPolicy policy)
         {
             var stringBuilder = new StringBuilder();
-            TryAddPolicySource(stringBuilder, policy.DefaultSrc, CspDirectiveResources.DefaultSrc);
-            TryAddPolicySource(stringBuilder, policy.ScriptSrc, CspDirectiveResources.ScriptSrc);
-            TryAddPolicySource(stringBuilder, policy.ScriptSrcAttr, CspDirectiveResources.ScriptSrcAttr);
-            TryAddPolicySource(stringBuilder, policy.ScriptSrcElem, CspDirectiveResources.ScriptSrcElem);
-            TryAddPolicySource(stringBuilder, policy.StyleSrc, CspDirectiveResources.StyleSrc);
-            TryAddPolicySource(stringBuilder, policy.StyleSrcAttr, CspDirectiveResources.StyleSrcAttr);
-            TryAddPolicySource(stringBuilder, policy.StyleSrcElem, CspDirectiveResources.StyleSrcElem);
-            TryAddPolicySource(stringBuilder, policy.ImgSrc, CspDirectiveResources.ImgSrc);
-            TryAddPolicySource(stringBuilder, policy.ConnectSrc, CspDirectiveResources.ConnectSrc);
-            TryAddPolicySource(stringBuilder, policy.FontSrc, CspDirectiveResources.FontSrc);
-            TryAddPolicySource(stringBuilder, policy.ObjectSrc, CspDirectiveResources.ObjectSrc);
-            TryAddPolicySource(stringBuilder, policy.MediaSrc, CspDirectiveResources.MediaSrc);
-            TryAddPolicySource(stringBuilder, policy.ChildSrc, CspDirectiveResources.ChildSrc);
-            TryAddPolicySource(stringBuilder, policy.FormAction, CspDirectiveResources.FormAction);
-            TryAddPolicySource(stringBuilder, policy.FrameAncestors, CspDirectiveResources.FrameAncestors);
-            TryAddPolicySource(stringBuilder, policy.FrameSrc, CspDirectiveResources.FrameSrc);
-            TryAddPolicySource(stringBuilder, policy.ManifestSrc, CspDirectiveResources.ManifestSource);
-            TryAddPolicySource(stringBuilder, policy.WorkerSrc, CspDirectiveResources.WorkerSource);
+            TryAddPolicySource(stringBuilder, policy.DefaultSrc, ContentSecurityDirectiveResources.DefaultSrc);
+            TryAddPolicySource(stringBuilder, policy.ScriptSrc, ContentSecurityDirectiveResources.ScriptSrc);
+            TryAddPolicySource(stringBuilder, policy.ScriptSrcAttr, ContentSecurityDirectiveResources.ScriptSrcAttr);
+            TryAddPolicySource(stringBuilder, policy.ScriptSrcElem, ContentSecurityDirectiveResources.ScriptSrcElem);
+            TryAddPolicySource(stringBuilder, policy.StyleSrc, ContentSecurityDirectiveResources.StyleSrc);
+            TryAddPolicySource(stringBuilder, policy.StyleSrcAttr, ContentSecurityDirectiveResources.StyleSrcAttr);
+            TryAddPolicySource(stringBuilder, policy.StyleSrcElem, ContentSecurityDirectiveResources.StyleSrcElem);
+            TryAddPolicySource(stringBuilder, policy.ImgSrc, ContentSecurityDirectiveResources.ImgSrc);
+            TryAddPolicySource(stringBuilder, policy.ConnectSrc, ContentSecurityDirectiveResources.ConnectSrc);
+            TryAddPolicySource(stringBuilder, policy.FontSrc, ContentSecurityDirectiveResources.FontSrc);
+            TryAddPolicySource(stringBuilder, policy.ObjectSrc, ContentSecurityDirectiveResources.ObjectSrc);
+            TryAddPolicySource(stringBuilder, policy.MediaSrc, ContentSecurityDirectiveResources.MediaSrc);
+            TryAddPolicySource(stringBuilder, policy.ChildSrc, ContentSecurityDirectiveResources.ChildSrc);
+            TryAddPolicySource(stringBuilder, policy.FormAction, ContentSecurityDirectiveResources.FormAction);
+            TryAddPolicySource(stringBuilder, policy.FrameAncestors, ContentSecurityDirectiveResources.FrameAncestors);
+            TryAddPolicySource(stringBuilder, policy.FrameSrc, ContentSecurityDirectiveResources.FrameSrc);
+            TryAddPolicySource(stringBuilder, policy.ManifestSrc, ContentSecurityDirectiveResources.ManifestSource);
+            TryAddPolicySource(stringBuilder, policy.WorkerSrc, ContentSecurityDirectiveResources.WorkerSource);
             TryAddSandbox(stringBuilder, policy);
             TryUpgradeInsecureRequests(stringBuilder, policy);
             return stringBuilder.ToString().TrimEnd();
@@ -40,7 +40,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         {
             if (policy.UpgradeInsecureRequests)
             {
-                stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "{0}; ", CspDirectiveResources.UpgradeInsecureRequests);
+                stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "{0}; ", ContentSecurityDirectiveResources.UpgradeInsecureRequests);
             }
         }
 
@@ -56,7 +56,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         {
             if (policy.Sandbox != null)
             {
-                stringBuilder.AppendFormat(CultureInfo.InvariantCulture, " {0} {1}; ", CspDirectiveResources.Sandbox, policy.Sandbox.Value);
+                stringBuilder.AppendFormat(CultureInfo.InvariantCulture, " {0} {1}; ", ContentSecurityDirectiveResources.Sandbox, policy.Sandbox.Value);
             }
         }
     }

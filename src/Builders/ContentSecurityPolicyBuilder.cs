@@ -5,6 +5,24 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
 {
     public class ContentSecurityPolicyBuilder
     {
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public ContentSecurityPolicyBuilder()
+        {
+
+        }
+
+        /// <summary>
+        /// Allows using a base policy
+        /// </summary>
+        /// <param name="policy"></param>
+        public ContentSecurityPolicyBuilder(ContentSecurityPolicy policy)
+        {
+            Policy = policy;
+        }
+
+
         internal ContentSecurityPolicy Policy { get; } = new ContentSecurityPolicy();
 
         /// <summary>

@@ -1,30 +1,28 @@
 ﻿using AspNetCore.Hosting.ContentSecurityPolicies.Builders;
 using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
 {
+    [ExcludeFromCodeCoverage]
     public class PolicyConstantBuilderTests
     {
         [Fact]
         public void Test()
         {
-            var nonce = PolicyConstantBuilder.Nonce("test");
-            Assert.Equal($"{ContentSecurityPolicyResources.NonceHyphen}test", nonce);
+            const string value = "test";
+            var nonce = PolicyConstantBuilder.Nonce(value);
+            Assert.Equal($"{ContentSecurityPolicyResources.NonceHyphen}{value}", nonce);
 
             var sha256 = PolicyConstantBuilder.Sha256("test");
-            Assert.Equal($"{ContentSecurityPolicyResources.Sha256}test", sha256);
+            Assert.Equal($"{ContentSecurityPolicyResources.Sha256}{value}", sha256);
 
             var sha384 = PolicyConstantBuilder.Sha384("test");
-            Assert.Equal($"{ContentSecurityPolicyResources.Sha384}test", sha384);
+            Assert.Equal($"{ContentSecurityPolicyResources.Sha384}{value}", sha384);
 
             var sha512 = PolicyConstantBuilder.Sha512("test");
-            Assert.Equal($"{ContentSecurityPolicyResources.Sha512}test", sha512);
+            Assert.Equal($"{ContentSecurityPolicyResources.Sha512}{value}", sha512);
         }
     }
 }

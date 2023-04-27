@@ -2,8 +2,11 @@
 using AspNetCore.Hosting.ContentSecurityPolicies.Models.Sandbox;
 using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
 {
+    [ExcludeFromCodeCoverage]
     public class SandboxTests
     {
         [Fact]
@@ -32,7 +35,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             ContentSecurityPolicy policy = new() { Sandbox = sandbox };
             Assert.NotNull(policy.Sandbox);
             var header = ContentSecurityHeaderBuilderTests.BuildHeader(policy);
-            Assert.Contains($"{CspDirectiveResources.Sandbox} {policy.Sandbox.Value};", header);
+            Assert.Contains($"{ContentSecurityDirectiveResources.Sandbox} {policy.Sandbox.Value};", header);
         }
     }
 }

@@ -1,15 +1,13 @@
 ﻿using AspNetCore.Hosting.ContentSecurityPolicies.Builders;
+using AspNetCore.Hosting.ContentSecurityPolicies.Models;
 using AspNetCore.Hosting.ContentSecurityPolicies.Models.Sandbox;
 using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
 {
+    [ExcludeFromCodeCoverage]
     public class ContentSecurityPolicyBuilderTests
     {
         [Fact]
@@ -39,11 +37,10 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
         [Fact]
         public void TestDefaultSrc()
         {
-            var builder = new ContentSecurityPolicyBuilder();
-            builder.WithDefaultSource(ContentSecurityPolicyResources.Self);
+            var builder = new ContentSecurityPolicyBuilder(new ContentSecurityPolicy());
             var policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.Self, policy.DefaultSrc);
+            Assert.Contains(ContentSecuritySchemaResources.Self, policy.DefaultSrc);
         }
 
 
@@ -51,20 +48,20 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
         public void TestScriptSrc()
         {
             var builder = new ContentSecurityPolicyBuilder();
-            builder.WithScriptSource(ContentSecurityPolicyResources.Self);
+            builder.WithScriptSource(ContentSecuritySchemaResources.Self);
             var policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.Self, policy.ScriptSrc);
+            Assert.Contains(ContentSecuritySchemaResources.Self, policy.ScriptSrc);
 
-            builder.WithScriptAttributeSource(ContentSecurityPolicyResources.Self);
+            builder.WithScriptAttributeSource(ContentSecuritySchemaResources.Self);
             policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.Self, policy.ScriptSrcAttr);
+            Assert.Contains(ContentSecuritySchemaResources.Self, policy.ScriptSrcAttr);
 
-            builder.WithScriptElementsSource(ContentSecurityPolicyResources.Self);
+            builder.WithScriptElementsSource(ContentSecuritySchemaResources.Self);
             policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.Self, policy.ScriptSrcElem);
+            Assert.Contains(ContentSecuritySchemaResources.Self, policy.ScriptSrcElem);
         }
 
 
@@ -72,90 +69,90 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
         public void TestStyleSrc()
         {
             var builder = new ContentSecurityPolicyBuilder();
-            builder.WithStyleSource(ContentSecurityPolicyResources.Self);
+            builder.WithStyleSource(ContentSecuritySchemaResources.Self);
             var policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.Self, policy.StyleSrc);
+            Assert.Contains(ContentSecuritySchemaResources.Self, policy.StyleSrc);
 
-            builder.WithStyleAttributeSource(ContentSecurityPolicyResources.Self);
+            builder.WithStyleAttributeSource(ContentSecuritySchemaResources.Self);
             policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.Self, policy.StyleSrcAttr);
+            Assert.Contains(ContentSecuritySchemaResources.Self, policy.StyleSrcAttr);
 
-            builder.WithStyleElementsSource(ContentSecurityPolicyResources.Self);
+            builder.WithStyleElementsSource(ContentSecuritySchemaResources.Self);
             policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.Self, policy.StyleSrcAttr);
+            Assert.Contains(ContentSecuritySchemaResources.Self, policy.StyleSrcAttr);
         }
 
         [Fact]
         public void TestConnectSource()
         {
             var builder = new ContentSecurityPolicyBuilder();
-            builder.WithConnectSource(ContentSecurityPolicyResources.Self);
+            builder.WithConnectSource(ContentSecuritySchemaResources.Self);
             var policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.Self, policy.ConnectSrc);
+            Assert.Contains(ContentSecuritySchemaResources.Self, policy.ConnectSrc);
         }
 
         [Fact]
         public void TestMediaSource()
         {
             var builder = new ContentSecurityPolicyBuilder();
-            builder.WithImageSource(ContentSecurityPolicyResources.Self);
+            builder.WithImageSource(ContentSecuritySchemaResources.Self);
             var policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.Self, policy.ImgSrc);
+            Assert.Contains(ContentSecuritySchemaResources.Self, policy.ImgSrc);
 
-            builder.WithMediaSource(ContentSecurityPolicyResources.Self);
+            builder.WithMediaSource(ContentSecuritySchemaResources.Self);
             policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.Self, policy.MediaSrc);
+            Assert.Contains(ContentSecuritySchemaResources.Self, policy.MediaSrc);
 
-            builder.WithObjectSource(ContentSecurityPolicyResources.None);
+            builder.WithObjectSource(ContentSecuritySchemaResources.None);
             policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.None, policy.ObjectSrc);
+            Assert.Contains(ContentSecuritySchemaResources.None, policy.ObjectSrc);
         }
 
         [Fact]
         public void TestFontSource()
         {
             var builder = new ContentSecurityPolicyBuilder();
-            builder.WithFontSource(ContentSecurityPolicyResources.Self);
+            builder.WithFontSource(ContentSecuritySchemaResources.Self);
             var policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.Self, policy.FontSrc);
+            Assert.Contains(ContentSecuritySchemaResources.Self, policy.FontSrc);
         }
 
         [Fact]
         public void TestFormAction()
         {
             var builder = new ContentSecurityPolicyBuilder();
-            builder.WithFormAction(ContentSecurityPolicyResources.Self);
+            builder.WithFormAction(ContentSecuritySchemaResources.Self);
             var policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.Self, policy.FormAction);
+            Assert.Contains(ContentSecuritySchemaResources.Self, policy.FormAction);
         }
 
         [Fact]
         public void TestFrames()
         {
             var builder = new ContentSecurityPolicyBuilder();
-            builder.WithFrameSource(ContentSecurityPolicyResources.None);
+            builder.WithFrameSource(ContentSecuritySchemaResources.None);
             var policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.None, policy.FrameSrc);
+            Assert.Contains(ContentSecuritySchemaResources.None, policy.FrameSrc);
 
-            builder.WithFrameAncestors(ContentSecurityPolicyResources.None);
+            builder.WithFrameAncestors(ContentSecuritySchemaResources.None);
             policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.None, policy.FrameAncestors);
+            Assert.Contains(ContentSecuritySchemaResources.None, policy.FrameAncestors);
 
-            builder.WithChildSource(ContentSecurityPolicyResources.None);
+            builder.WithChildSource(ContentSecuritySchemaResources.None);
             policy = builder.BuildPolicy();
             Assert.NotNull(policy);
-            Assert.Contains(ContentSecurityPolicyResources.None, policy.ChildSrc);
+            Assert.Contains(ContentSecuritySchemaResources.None, policy.ChildSrc);
         }
 
         [Fact]

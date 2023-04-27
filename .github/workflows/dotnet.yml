@@ -1,5 +1,12 @@
 name: "Build, test, pack, and release to NuGet"
 
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_NOLOGO: true
+  NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+  solutionName: AspNetCore.Hosting.ContentSecurityPolicies.sln
+  
 on:
   
   workflow_dispatch:
@@ -10,12 +17,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
-    env:
-      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-      DOTNET_CLI_TELEMETRY_OPTOUT: true
-      DOTNET_NOLOGO: true
-      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-
     steps:
     - name: "Checkout source"
       id: checkout
@@ -27,33 +28,28 @@ jobs:
       with:
         dotnet-version: 6.0.x
         
+    - name: Install dependencies
+      id: restore
+      run: dotnet restore ${{ env.solutionName }}
+        
     - name: Build .NET Library
       id: build
-      uses: Elskom/build-dotnet@v1.1.1
+      run: dotnet build ${{ env.solutionName }} -c Release --no-restore  
+    
+    - name: Test .NET Library
+      id: test
+      run: dotnet test ${{ env.solutionName }} --no-restore --verbosity normal
+    
+    - name: Pack 
+      id: pack
+      run: dotnet pack ${{ env.solutionName }} --no-build -c Release -o nupkgs
+      
+    - name: Setup NuGet.exe for use with actions
+      uses: NuGet/setup-nuget@v1.2.0
       with:
-        TEST: true
-        PACK: true
-
-    - name: NuGet push
-      id: nuget-push
-      uses: edumserrano/nuget-push@v1.2.2
-      with:
-        api-key: ${{ env.NUGET_API_KEY }}
-        working-directory: ./src/bin/Release/
-
-    - name: Log output
-      id: log-output
-      if: steps.nuget-push.conclusion != 'skipped' && always() # run regardless if the previous step failed or not, just as long as it wasn't skipped
-      shell: pwsh
-      run: |
-        $pushResult = '${{ steps.nuget-push.outputs.push-result }}' | ConvertFrom-Json
-        $pushResultAsJsonIndented = ConvertTo-Json $pushResult
-        Write-Output $pushResultAsJsonIndented  # outputs the result of the nuget push operation as an indented JSON string
-        Write-Output '${{ steps.nuget-push.outputs.status }}' # outputs the overall status of the nuget push action
-
-        # since we only pushed one package/symbols there's no need to iterate the packages list
-        # there will only be one element in the array
-        $package = $pushResult.packages[0]
-        Write-Output "$($package.status)"  # outputs the status of the nuget push operation
-        Write-Output "$($package.package)" # outputs the NuGet package name that was pushed
-        Write-Output "$($package.symbols)" # outputs the symbols package name that was pushed
+        nuget-version: latest
+        nuget-api-key: ${{ env.NUGET_API_KEY }}
+        
+    - name: NuGet Push
+      id: push
+      run: nuget push /nupkgs/AspNetCore.Hosting.ContentSecurityPolicies.*.nupkg -SkipDuplicate

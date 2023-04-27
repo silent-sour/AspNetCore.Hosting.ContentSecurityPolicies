@@ -80,24 +80,6 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;none&apos;.
-        /// </summary>
-        public static string None {
-            get {
-                return ResourceManager.GetString("None", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &apos;self&apos;.
-        /// </summary>
-        public static string Self {
-            get {
-                return ResourceManager.GetString("Self", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to sha256-.
         /// </summary>
         public static string Sha256 {
@@ -121,33 +103,6 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Resources {
         public static string Sha512 {
             get {
                 return ResourceManager.GetString("Sha512", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &apos;strict-dynamic&apos;.
-        /// </summary>
-        public static string StrictDynamic {
-            get {
-                return ResourceManager.GetString("StrictDynamic", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &apos;unsafe-eval&apos;.
-        /// </summary>
-        public static string UnsafeEval {
-            get {
-                return ResourceManager.GetString("UnsafeEval", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &apos;unsafe-inline&apos;.
-        /// </summary>
-        public static string UnsafeInline {
-            get {
-                return ResourceManager.GetString("UnsafeInline", resourceCulture);
             }
         }
     }

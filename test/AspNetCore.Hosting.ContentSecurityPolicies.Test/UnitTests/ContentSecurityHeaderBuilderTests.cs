@@ -3,8 +3,11 @@ using AspNetCore.Hosting.ContentSecurityPolicies.Models;
 using AspNetCore.Hosting.ContentSecurityPolicies.Models.Sandbox;
 using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
 {
+    [ExcludeFromCodeCoverage]
     public class ContentSecurityHeaderBuilderTests
     {
 
@@ -21,33 +24,33 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
         public void TestBuildDefaultSrc()
         {
 
-            ContentSecurityPolicy policy = new() { DefaultSrc = { ContentSecurityPolicyResources.Self } };
+            ContentSecurityPolicy policy = new() { DefaultSrc = { ContentSecuritySchemaResources.Self } };
             Assert.NotEmpty(policy.DefaultSrc);
 
             var header = BuildHeader(policy);
-            Assert.Contains($"{CspDirectiveResources.DefaultSrc} {ContentSecurityPolicyResources.Self};", header);
+            Assert.Contains($"{ContentSecurityDirectiveResources.DefaultSrc} {ContentSecuritySchemaResources.Self};", header);
         }
 
         [Fact]
         public void TestBuildScriptSrc()
         {
 
-            ContentSecurityPolicy policy = new() { ScriptSrc = { ContentSecurityPolicyResources.Self } };
+            ContentSecurityPolicy policy = new() { ScriptSrc = { ContentSecuritySchemaResources.Self } };
             Assert.NotEmpty(policy.ScriptSrc);
 
             var header = BuildHeader(policy);
-            Assert.Contains($"{CspDirectiveResources.ScriptSrc} {ContentSecurityPolicyResources.Self};", header);
+            Assert.Contains($"{ContentSecurityDirectiveResources.ScriptSrc} {ContentSecuritySchemaResources.Self};", header);
         }
 
         [Fact]
         public void TestBuildStyleSrc()
         {
 
-            ContentSecurityPolicy policy = new() { StyleSrc = { ContentSecurityPolicyResources.Self } };
+            ContentSecurityPolicy policy = new() { StyleSrc = { ContentSecuritySchemaResources.Self } };
             Assert.NotEmpty(policy.StyleSrc);
 
             var header = BuildHeader(policy);
-            Assert.Contains($"{CspDirectiveResources.StyleSrc} {ContentSecurityPolicyResources.Self};", header);
+            Assert.Contains($"{ContentSecurityDirectiveResources.StyleSrc} {ContentSecuritySchemaResources.Self};", header);
         }
 
 
@@ -56,11 +59,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
         public void TestBuildStyleAttrSrc()
         {
 
-            ContentSecurityPolicy policy = new() { StyleSrcAttr = { ContentSecurityPolicyResources.Self } };
+            ContentSecurityPolicy policy = new() { StyleSrcAttr = { ContentSecuritySchemaResources.Self } };
             Assert.NotEmpty(policy.StyleSrcAttr);
 
             var header = BuildHeader(policy);
-            Assert.Contains($"{CspDirectiveResources.StyleSrcAttr} {ContentSecurityPolicyResources.Self};", header);
+            Assert.Contains($"{ContentSecurityDirectiveResources.StyleSrcAttr} {ContentSecuritySchemaResources.Self};", header);
         }
 
 
@@ -69,11 +72,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
         public void TestBuildStyleElemSrc()
         {
 
-            ContentSecurityPolicy policy = new() { StyleSrcElem = { ContentSecurityPolicyResources.Self } };
+            ContentSecurityPolicy policy = new() { StyleSrcElem = { ContentSecuritySchemaResources.Self } };
             Assert.NotEmpty(policy.StyleSrcElem);
 
             var header = BuildHeader(policy);
-            Assert.Contains($"{CspDirectiveResources.StyleSrcElem} {ContentSecurityPolicyResources.Self};", header);
+            Assert.Contains($"{ContentSecurityDirectiveResources.StyleSrcElem} {ContentSecuritySchemaResources.Self};", header);
         }
 
         [Fact]
@@ -83,7 +86,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             Assert.True(policy.UpgradeInsecureRequests);
 
             var header = BuildHeader(policy);
-            Assert.Contains($"{CspDirectiveResources.UpgradeInsecureRequests};", header);
+            Assert.Contains($"{ContentSecurityDirectiveResources.UpgradeInsecureRequests};", header);
         }
 
         [Fact]
@@ -92,7 +95,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             ContentSecurityPolicy policy = new() { Sandbox = new AllowPopupsToEscapeSandbox() };
             Assert.NotNull(policy.Sandbox);
             var header = BuildHeader(policy);
-            Assert.Contains($"{CspDirectiveResources.Sandbox} {policy.Sandbox.Value};", header);
+            Assert.Contains($"{ContentSecurityDirectiveResources.Sandbox} {policy.Sandbox.Value};", header);
         }
 
         public static string BuildHeader(ContentSecurityPolicy policy)

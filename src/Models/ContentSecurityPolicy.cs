@@ -11,7 +11,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Models
         /// Default Constructor.
         /// Uses 'self' as the default policy source
         /// </summary>
-        public ContentSecurityPolicy() : this(ContentSecurityPolicyResources.Self)
+        public ContentSecurityPolicy() : this(ContentSecuritySchemaResources.Self)
         {
         }
 

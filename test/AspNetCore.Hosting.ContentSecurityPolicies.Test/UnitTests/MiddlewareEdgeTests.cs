@@ -12,6 +12,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
 {
+    [ExcludeFromCodeCoverage]
     public class MiddlewareEdgeTests
     {
         [Fact]
@@ -49,7 +50,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
 
                             app.UseContentSecurityPolicy(policy =>
                             {
-                                policy.WithDefaultSource(ContentSecurityPolicyResources.None);
+                                policy.WithDefaultSource(ContentSecuritySchemaResources.None);
                                 currentPolicy = policy.BuildPolicy();
                             });
                             app.Run(async context =>

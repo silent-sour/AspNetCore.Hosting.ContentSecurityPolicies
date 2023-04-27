@@ -22,14 +22,14 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class SchemaResources {
+    public class ContentSecuritySchemaResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SchemaResources() {
+        internal ContentSecuritySchemaResources() {
         }
         
         /// <summary>
@@ -39,7 +39,8 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AspNetCore.Hosting.ContentSecurityPolicies.Resources.SchemaResources", typeof(SchemaResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AspNetCore.Hosting.ContentSecurityPolicies.Resources.ContentSecuritySchemaResourc" +
+                            "es", typeof(ContentSecuritySchemaResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -111,6 +112,51 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Resources {
         public static string MediaStream {
             get {
                 return ResourceManager.GetString("MediaStream", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;none&apos;.
+        /// </summary>
+        public static string None {
+            get {
+                return ResourceManager.GetString("None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;self&apos;.
+        /// </summary>
+        public static string Self {
+            get {
+                return ResourceManager.GetString("Self", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;strict-dynamic&apos;.
+        /// </summary>
+        public static string StrictDynamic {
+            get {
+                return ResourceManager.GetString("StrictDynamic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;unsafe-eval&apos;.
+        /// </summary>
+        public static string UnsafeEval {
+            get {
+                return ResourceManager.GetString("UnsafeEval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;unsafe-inline&apos;.
+        /// </summary>
+        public static string UnsafeInline {
+            get {
+                return ResourceManager.GetString("UnsafeInline", resourceCulture);
             }
         }
     }

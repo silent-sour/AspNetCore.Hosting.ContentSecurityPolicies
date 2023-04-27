@@ -8,31 +8,31 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.Benchmarks
 {
-    public class CspBenchmark
+    public static class CspBenchmark
     {
         [Benchmark]
         [ExcludeFromCodeCoverage]
-        public string DefaultSelfPolicy()
+        public static string DefaultSelfPolicy()
         {
-            ContentSecurityPolicy policy = new() { DefaultSrc = { ContentSecurityPolicyResources.Self } };
+            ContentSecurityPolicy policy = new() { DefaultSrc = { ContentSecuritySchemaResources.Self } };
             var header = ContentSecurityHeaderBuilderTests.BuildHeader(policy);
             return header;
         }
 
         [Benchmark]
         [ExcludeFromCodeCoverage]
-        public string ScriptSrcSelfPolicy()
+        public static string ScriptSrcSelfPolicy()
         {
-            ContentSecurityPolicy policy = new() { ScriptSrc = { ContentSecurityPolicyResources.Self } };
+            ContentSecurityPolicy policy = new() { ScriptSrc = { ContentSecuritySchemaResources.Self } };
             var header = ContentSecurityHeaderBuilderTests.BuildHeader(policy);
             return header;
         }
 
         [Benchmark]
         [ExcludeFromCodeCoverage]
-        public string DefaultAndScriptSelfPolicy()
+        public static string DefaultAndScriptSelfPolicy()
         {
-            ContentSecurityPolicy policy = new() { DefaultSrc = { ContentSecurityPolicyResources.Self }, ScriptSrc = { ContentSecurityPolicyResources.Self } };
+            ContentSecurityPolicy policy = new() { DefaultSrc = { ContentSecuritySchemaResources.Self }, ScriptSrc = { ContentSecuritySchemaResources.Self } };
             var header = ContentSecurityHeaderBuilderTests.BuildHeader(policy);
             return header;
         }

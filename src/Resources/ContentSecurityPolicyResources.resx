@@ -123,12 +123,6 @@
   <data name="NonceHyphen" xml:space="preserve">
     <value>nonce-</value>
   </data>
-  <data name="None" xml:space="preserve">
-    <value>'none'</value>
-  </data>
-  <data name="Self" xml:space="preserve">
-    <value>'self'</value>
-  </data>
   <data name="Sha256" xml:space="preserve">
     <value>sha256-</value>
   </data>
@@ -137,14 +131,5 @@
   </data>
   <data name="Sha512" xml:space="preserve">
     <value>sha512-</value>
-  </data>
-  <data name="StrictDynamic" xml:space="preserve">
-    <value>'strict-dynamic'</value>
-  </data>
-  <data name="UnsafeEval" xml:space="preserve">
-    <value>'unsafe-eval'</value>
-  </data>
-  <data name="UnsafeInline" xml:space="preserve">
-    <value>'unsafe-inline'</value>
   </data>
 </root>
