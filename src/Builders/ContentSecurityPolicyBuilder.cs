@@ -10,8 +10,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <summary>
         /// The default-src is the default policy for loading content such as JavaScript, Images, CSS, Font's, AJAX requests, Frames, HTML5 Media.
         /// </summary>
-        /// <param name="includeSelf"></param>
-        /// <param name=""></param>
+        /// <param name="sources"></param>
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithDefaultSource(params string[] sources)
         {
@@ -26,14 +25,14 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithScriptSource(params string[] sources)
         {
-                Policy.ScriptSrc.UnionWith(sources);
+            Policy.ScriptSrc.UnionWith(sources);
             return this;
         }
 
         /// <summary>
         /// Defines valid sources of styles for inline event handlers. 
         /// </summary>
-        /// <param name="souces"></param>
+        /// <param name="sources"></param>
         /// <returns></returns>
         public ContentSecurityPolicyBuilder WithScriptAttributeSource(params string[] sources)
         {

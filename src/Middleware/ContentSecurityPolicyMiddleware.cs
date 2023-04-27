@@ -26,7 +26,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Middleware
             _logger = logger;
         }
 
-        public Task Invoke(HttpContext context)
+        public Task InvokeAsync(HttpContext context)
         {
             var added = context.Response.Headers.TryAdd(ContentSecurityPolicyResources.ContentSecurityPolicyHeader, _policyHeader);
             if (!added)

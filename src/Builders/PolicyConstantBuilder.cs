@@ -1,6 +1,7 @@
 ﻿using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
@@ -12,7 +13,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// </summary>
         /// <param name="base64Value"></param>
         /// <returns></returns>
-        public static string Nonce(ReadOnlySpan<char> base64Value)
+        public static string Nonce([NotNull] ReadOnlySpan<char> base64Value)
         {
             return JoinSpans(ContentSecurityPolicyResources.NonceHyphen, base64Value);
         }
@@ -22,7 +23,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
-        public static string Sha256(ReadOnlySpan<char> hash)
+        public static string Sha256([NotNull] ReadOnlySpan<char> hash)
         {
             return JoinSpans(ContentSecurityPolicyResources.Sha256, hash);
         }
@@ -32,7 +33,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
-        public static string Sha384(ReadOnlySpan<char> hash)
+        public static string Sha384([NotNull] ReadOnlySpan<char> hash)
         {
             return JoinSpans(ContentSecurityPolicyResources.Sha384, hash);
         }
@@ -42,12 +43,12 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
-        public static string Sha512(ReadOnlySpan<char> hash)
+        public static string Sha512([NotNull] ReadOnlySpan<char> hash)
         {
             return JoinSpans(ContentSecurityPolicyResources.Sha512, hash);
         }
 
-        private static string JoinSpans(ReadOnlySpan<char> encodingSpan, ReadOnlySpan<char> valueSpan)
+        private static string JoinSpans([NotNull] ReadOnlySpan<char> encodingSpan, [NotNull] ReadOnlySpan<char> valueSpan)
         {
             return new StringBuilder(encodingSpan.Length + valueSpan.Length)
                 .Append(encodingSpan)

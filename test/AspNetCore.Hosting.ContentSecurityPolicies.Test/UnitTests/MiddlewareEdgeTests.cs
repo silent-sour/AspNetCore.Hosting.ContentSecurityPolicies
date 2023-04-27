@@ -15,7 +15,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
     public class MiddlewareEdgeTests
     {
         [Fact]
-        public void TestErrors()
+        public async Task TestErrors()
         {
             Mock<RequestDelegate> requestDelegate = new();
             var policy = new ContentSecurityPolicyBuilder()
@@ -30,8 +30,8 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             var response = new Mock<HttpResponse>();
             response.Setup(r => r.Headers).Returns(new HeaderDictionary());
             context.Setup(c => c.Response).Returns(response.Object);
-            middlware.Invoke(context.Object);
-            middlware.Invoke(context.Object);
+            await middlware.InvokeAsync(context.Object);
+            await middlware.InvokeAsync(context.Object);
         }
 
         [Fact]
