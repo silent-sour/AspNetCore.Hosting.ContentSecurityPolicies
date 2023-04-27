@@ -15,6 +15,8 @@
 		<RepositoryUrl>https://github.com/lodrial/AspNetCore.Hosting.ContentSecurityPolicies</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<AssemblyVersion>1.1.0.0</AssemblyVersion>
+		<FileVersion>$(AssemblyVersion)</FileVersion>
+		<Version>$(AssemblyVersion)</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<IncludeSymbols>True</IncludeSymbols>
