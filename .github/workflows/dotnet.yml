@@ -52,4 +52,5 @@ jobs:
         
     - name: NuGet Push
       id: push
-      run: nuget push /nupkgs/AspNetCore.Hosting.ContentSecurityPolicies.*.nupkg -SkipDuplicate
+      working-directory: nupkgs
+      run: dotnet nuget push AspNetCore.Hosting.ContentSecurityPolicies.*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate -k  ${{ env.NUGET_API_KEY }}
