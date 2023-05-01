@@ -138,6 +138,15 @@
   <data name="MicrosoftLogin" xml:space="preserve">
     <value>https://login.microsoftonline.com</value>
   </data>
+  <data name="MicrosoftTeams" xml:space="preserve">
+    <value>https://teams.microsoft.com</value>
+  </data>
+  <data name="MicrosoftTeamsWildcard" xml:space="preserve">
+    <value>https://*.teams.microsoft.com</value>
+  </data>
+  <data name="Skype" xml:space="preserve">
+    <value>https://*.skype.com</value>
+  </data>
   <data name="StackPathBootstrap" xml:space="preserve">
     <value>https://stackpath.bootstrapcdn.com</value>
   </data>

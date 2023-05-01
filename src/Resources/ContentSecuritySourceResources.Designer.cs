@@ -125,6 +125,33 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://teams.microsoft.com.
+        /// </summary>
+        public static string MicrosoftTeams {
+            get {
+                return ResourceManager.GetString("MicrosoftTeams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://*.teams.microsoft.com.
+        /// </summary>
+        public static string MicrosoftTeamsWildcard {
+            get {
+                return ResourceManager.GetString("MicrosoftTeamsWildcard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://*.skype.com.
+        /// </summary>
+        public static string Skype {
+            get {
+                return ResourceManager.GetString("Skype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://stackpath.bootstrapcdn.com.
         /// </summary>
         public static string StackPathBootstrap {
