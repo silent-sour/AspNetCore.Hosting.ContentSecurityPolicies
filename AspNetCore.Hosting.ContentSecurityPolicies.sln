@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Hosting.ContentS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Hosting.ContentSecurityPolicies.Test", "test\AspNetCore.Hosting.ContentSecurityPolicies.Test\AspNetCore.Hosting.ContentSecurityPolicies.Test.csproj", "{C7A7934D-F72E-4189-9512-C61D7F4C98A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Hosting.ContentSecurityPolicies.Benchmark", "test\AspNetCore.Hosting.ContentSecurityPolicies.Benchmark\AspNetCore.Hosting.ContentSecurityPolicies.Benchmark.csproj", "{D9DC51C2-675F-4412-82BE-3C5EA3952566}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Hosting.ContentSecurityPolicies.Benchmark", "test\AspNetCore.Hosting.ContentSecurityPolicies.Benchmark\AspNetCore.Hosting.ContentSecurityPolicies.Benchmark.csproj", "{D9DC51C2-675F-4412-82BE-3C5EA3952566}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EF0FBD4A-CE56-4441-B3CD-61EFB296686D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

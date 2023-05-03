@@ -1,1 +1,0 @@
-D:\source\ContentSecurityPolicies\.sonarqube\out\1
