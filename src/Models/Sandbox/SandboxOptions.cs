@@ -1,47 +1,52 @@
-﻿namespace AspNetCore.Hosting.ContentSecurityPolicies.Models.Sandbox
+﻿using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
+
+namespace AspNetCore.Hosting.ContentSecurityPolicies.Models.Sandbox
 {
+    /// <summary>
+    /// Helper class to define sandbox options
+    /// </summary>
     public static class SandboxOptions
     {
         /// <summary>
         /// Allows the embedded browsing context to submit forms. If this keyword is not used, this operation is not allowed.
         /// </summary>
-        public static AllowForms AllowForms { get; set; } = new AllowForms();
+        public static SandboxOption AllowForms { get; set; } = new SandboxOption(ContentSecuritySandboxResources.AllowForms);
         /// <summary>
         /// Allows the embedded browsing context to open modal windows.
         /// </summary>
-        public static AllowModals AllowModals { get; set; } = new AllowModals();
+        public static SandboxOption AllowModals { get; set; } = new SandboxOption(ContentSecuritySandboxResources.AllowModals);
         /// <summary>
         /// Allows the embedded browsing context to disable the ability to lock the screen orientation.
         /// </summary>
-        public static AllowOrientationLock AllowOrientationLock { get; set; } = new AllowOrientationLock();
+        public static SandboxOption AllowOrientationLock { get; set; } = new SandboxOption(ContentSecuritySandboxResources.AllowOrientationLock);
         /// <summary>
         /// Allows the embedded browsing context to use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API">Pointer Lock API</a>
         /// </summary>
-        public static AllowPointerLock AllowPointerLock { get; set; } = new AllowPointerLock();
+        public static SandboxOption AllowPointerLock { get; set; } = new SandboxOption(ContentSecuritySandboxResources.AllowPointerLock);
 
         /// <summary>
         /// Allows popups (like from window.open, target="_blank", showModalDialog). If this keyword is not used, that functionality will silently fail.
         /// </summary>
-        public static AllowPopups AllowPopups { get; set; } = new AllowPopups();
+        public static SandboxOption AllowPopups { get; set; } = new SandboxOption(ContentSecuritySandboxResources.AllowPopups);
         /// <summary>
         /// Allows a sandboxed document to open new windows without forcing the sandboxing flags upon them. This will allow, for example, a third-party advertisement to be safely sandboxed without forcing the same restrictions upon a landing page.
         /// </summary>
-        public static AllowPopupsToEscapeSandbox AllowPopupsToEscapeSandbox { get; set; } = new AllowPopupsToEscapeSandbox();
+        public static SandboxOption AllowPopupsToEscapeSandbox { get; set; } = new SandboxOption(ContentSecuritySandboxResources.AllowPopupsToEscapeSandbox);
         /// <summary>
         /// Allows embedders to have control over whether an iframe can start a presentation session.
         /// </summary>
-        public static AllowPresentation AllowPresentation { get; set; } = new AllowPresentation();
+        public static SandboxOption AllowPresentation { get; set; } = new SandboxOption(ContentSecuritySandboxResources.AllowPresentation);
         /// <summary>
         /// Allows the content to be treated as being from its normal origin. If this keyword is not used, the embedded content is treated as being from a unique origin.
         /// </summary>
-        public static AllowSameOrigin AllowSameOrigin { get; set; } = new AllowSameOrigin();
+        public static SandboxOption AllowSameOrigin { get; set; } = new SandboxOption(ContentSecuritySandboxResources.AllowSameOrigin);
         /// <summary>
         /// Allows the embedded browsing context to run scripts (but not create pop-up windows). If this keyword is not used, this operation is not allowed.
         /// </summary>
-        public static AllowScripts AllowScripts { get; set; } = new AllowScripts();
+        public static SandboxOption AllowScripts { get; set; } = new SandboxOption(ContentSecuritySandboxResources.AllowScripts);
         /// <summary>
         /// Allows the embedded browsing context to navigate (load) content to the top-level browsing context. If this keyword is not used, this operation is not allowed.
         /// </summary>
-        public static AllowTopNavigation AllowTopNavigation { get; set; } = new AllowTopNavigation();
+        public static SandboxOption AllowTopNavigation { get; set; } = new SandboxOption(ContentSecuritySandboxResources.AllowTopNavigation);
     }
 }

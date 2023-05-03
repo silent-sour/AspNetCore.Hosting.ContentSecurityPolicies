@@ -63,6 +63,11 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>ContentSecurityPolicyResources.resx</DependentUpon>
 	  </Compile>
+	  <Compile Update="Resources\ContentSecuritySandboxResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>ContentSecuritySandboxResources.resx</DependentUpon>
+	  </Compile>
 	  <Compile Update="Resources\ContentSecuritySourceResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
@@ -84,6 +89,10 @@
 	  <EmbeddedResource Update="Resources\ContentSecurityPolicyResources.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	    <LastGenOutput>ContentSecurityPolicyResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\ContentSecuritySandboxResources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>ContentSecuritySandboxResources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Resources\ContentSecuritySourceResources.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>

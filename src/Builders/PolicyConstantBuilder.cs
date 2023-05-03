@@ -12,7 +12,10 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
     public static class PolicyConstantBuilder
     {
         /// <summary>
-        /// A whitelist for specific inline scripts using a cryptographic nonce (number used once). The server must generate a unique nonce value each time it transmits a policy. It is critical to provide an unguessable nonce, as bypassing a resource’s policy is otherwise trivial. See unsafe inline script for an example.
+        /// A whitelist for specific inline scripts using a cryptographic nonce (number used once). 
+        /// The server must generate a unique nonce value each time it transmits a policy. 
+        /// It is critical to provide an unguessable nonce, as bypassing a resource’s policy is otherwise trivial. 
+        /// See unsafe inline script for an example.
         /// </summary>
         /// <param name="base64Value"></param>
         /// <returns></returns>
@@ -22,7 +25,8 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         }
 
         /// <summary>
-        /// A sha256, of inline scripts or styles. When generating the hash, don't include the <script> or <style> tags and note that capitalization and whitespace matter, including leading or trailing whitespace.
+        /// A sha256, of inline scripts or styles. When generating the hash, don't include the <script> or <style> tags 
+        /// and note that capitalization and whitespace matter, including leading or trailing whitespace.
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
@@ -32,7 +36,8 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         }
 
         /// <summary>
-        /// A sha384 of inline scripts or styles. When generating the hash, don't include the <script> or <style> tags and note that capitalization and whitespace matter, including leading or trailing whitespace.
+        /// A sha384 of inline scripts or styles. When generating the hash, don't include the <script> or <style> tags 
+        /// and note that capitalization and whitespace matter, including leading or trailing whitespace.
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
@@ -42,7 +47,8 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         }
 
         /// <summary>
-        /// A sha512 of inline scripts or styles. When generating the hash, don't include the <script> or <style> tags and note that capitalization and whitespace matter, including leading or trailing whitespace.
+        /// A sha512 of inline scripts or styles. When generating the hash, don't include the <script> or <style> tags 
+        /// and note that capitalization and whitespace matter, including leading or trailing whitespace.
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
@@ -51,11 +57,17 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
             return JoinSpans(ContentSecurityPolicyResources.Sha512, hash);
         }
 
-        private static string JoinSpans([NotNull] ReadOnlySpan<char> encodingSpan, [NotNull] ReadOnlySpan<char> valueSpan)
+        /// <summary>
+        /// Optimized concatenation
+        /// </summary>
+        /// <param name="baseSpan">The span to append to</param>
+        /// <param name="appendSpan">The span to be appended</param>
+        /// <returns>The joined string</returns>
+        private static string JoinSpans([NotNull] ReadOnlySpan<char> baseSpan, [NotNull] ReadOnlySpan<char> appendSpan)
         {
-            return new StringBuilder(encodingSpan.Length + valueSpan.Length)
-                .Append(encodingSpan)
-                .Append(valueSpan)
+            return new StringBuilder(baseSpan.Length + appendSpan.Length)
+                .Append(baseSpan)
+                .Append(appendSpan)
                 .ToString();
         }
     }
