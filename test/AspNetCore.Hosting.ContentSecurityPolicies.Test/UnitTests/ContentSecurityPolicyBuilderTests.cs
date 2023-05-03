@@ -159,7 +159,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
         public void TestSandbox()
         {
             var builder = new ContentSecurityPolicyBuilder();
-            AllowScripts allowScripts = SandboxOptions.AllowScripts;
+            SandboxOption allowScripts = SandboxOptions.AllowScripts;
             builder.WithSandBox(allowScripts);
             var policy = builder.BuildPolicy();
             Assert.NotNull(policy);

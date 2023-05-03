@@ -92,7 +92,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
         [Fact]
         public void TestSandbox()
         {
-            ContentSecurityPolicy policy = new() { Sandbox = new AllowPopupsToEscapeSandbox() };
+            ContentSecurityPolicy policy = new() { Sandbox = SandboxOptions.AllowPopupsToEscapeSandbox };
             Assert.NotNull(policy.Sandbox);
             var header = BuildHeader(policy);
             Assert.Contains($"{ContentSecurityDirectiveResources.Sandbox} {policy.Sandbox.Value};", header);
