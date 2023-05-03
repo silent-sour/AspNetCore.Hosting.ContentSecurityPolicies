@@ -28,10 +28,15 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageReleaseNotes>Optimizations and revised sandbox API</PackageReleaseNotes>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<CodeAnalysisRuleSet>..\.sonarlint\lodrial_aspnetcore.hosting.contentsecuritypoliciescsharp.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Remove="Resources\security-icon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AdditionalFiles Include="..\.sonarlint\lodrial_aspnetcore.hosting.contentsecuritypolicies\CSharp\SonarLint.xml" Link="SonarLint.xml" />
 	</ItemGroup>
 
 	<ItemGroup>

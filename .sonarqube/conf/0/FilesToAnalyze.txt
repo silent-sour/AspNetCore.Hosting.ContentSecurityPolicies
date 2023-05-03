@@ -1,0 +1,17 @@
+﻿D:\source\ContentSecurityPolicies\src\Builders\ContentSecurityHeaderBuilder.cs
+D:\source\ContentSecurityPolicies\src\Builders\ContentSecurityPolicyBuilder.cs
+D:\source\ContentSecurityPolicies\src\Builders\PolicyConstantBuilder.cs
+D:\source\ContentSecurityPolicies\src\Extensions\ContentSecurityPolicyExtensions.cs
+D:\source\ContentSecurityPolicies\src\Logging\ContentSecurityPolicyLogger.cs
+D:\source\ContentSecurityPolicies\src\Middleware\ContentSecurityPolicyMiddleware.cs
+D:\source\ContentSecurityPolicies\src\Models\ContentSecurityPolicy.cs
+D:\source\ContentSecurityPolicies\src\Models\Sandbox\SandboxOption.cs
+D:\source\ContentSecurityPolicies\src\Models\Sandbox\SandboxOptions.cs
+D:\source\ContentSecurityPolicies\src\Resources\security-icon.png
+D:\source\ContentSecurityPolicies\src\Resources\ContentSecurityDirectiveResources.resx
+D:\source\ContentSecurityPolicies\src\Resources\ContentSecurityPolicyResources.resx
+D:\source\ContentSecurityPolicies\src\Resources\ContentSecuritySandboxResources.resx
+D:\source\ContentSecurityPolicies\src\Resources\ContentSecuritySchemaResources.resx
+D:\source\ContentSecurityPolicies\src\Resources\ContentSecuritySourceResources.resx
+D:\source\ContentSecurityPolicies\src\Properties\launchSettings.json
+D:\source\ContentSecurityPolicies\README.md

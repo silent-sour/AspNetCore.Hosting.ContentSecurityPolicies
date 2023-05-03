@@ -6,7 +6,12 @@
 	<ImplicitUsings>enable</ImplicitUsings>
 	<Nullable>enable</Nullable>
 	<IsPackable>false</IsPackable>
+	<CodeAnalysisRuleSet>..\..\.sonarlint\lodrial_aspnetcore.hosting.contentsecuritypoliciescsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\.sonarlint\lodrial_aspnetcore.hosting.contentsecuritypolicies\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
 
   <ItemGroup>
 	<PackageReference Include="BenchmarkDotNet" Version="0.13.5" />

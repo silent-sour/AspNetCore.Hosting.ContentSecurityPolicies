@@ -1,0 +1,17 @@
+﻿D:\source\ContentSecurityPolicies\test\AspNetCore.Hosting.ContentSecurityPolicies.Test\UnitTests\ContentSecurityHeaderBuilderTests.cs
+D:\source\ContentSecurityPolicies\test\AspNetCore.Hosting.ContentSecurityPolicies.Test\UnitTests\ContentSecurityPolicyBuilderExtensionsTests.cs
+D:\source\ContentSecurityPolicies\test\AspNetCore.Hosting.ContentSecurityPolicies.Test\UnitTests\ContentSecurityPolicyBuilderTests.cs
+D:\source\ContentSecurityPolicies\test\AspNetCore.Hosting.ContentSecurityPolicies.Test\UnitTests\MiddlewareEdgeTests.cs
+D:\source\ContentSecurityPolicies\test\AspNetCore.Hosting.ContentSecurityPolicies.Test\UnitTests\PolicyConstantBuilderTests.cs
+D:\source\ContentSecurityPolicies\test\AspNetCore.Hosting.ContentSecurityPolicies.Test\UnitTests\SandboxTests.cs
+D:\source\ContentSecurityPolicies\test\AspNetCore.Hosting.ContentSecurityPolicies.Test\Usings.cs
+C:\Users\lodri\.nuget\packages\microsoft.net.test.sdk\17.3.2\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.cs
+D:\source\ContentSecurityPolicies\test\AspNetCore.Hosting.ContentSecurityPolicies.Test\obj\Debug\net6.0\AspNetCore.Hosting.ContentSecurityPolicies.Test.GlobalUsings.g.cs
+D:\source\ContentSecurityPolicies\test\AspNetCore.Hosting.ContentSecurityPolicies.Test\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+D:\source\ContentSecurityPolicies\test\AspNetCore.Hosting.ContentSecurityPolicies.Test\obj\Debug\net6.0\AspNetCore.Hosting.ContentSecurityPolicies.Test.AssemblyInfo.cs
+C:\Users\lodri\.nuget\packages\microsoft.testplatform.testhost\17.3.2\build\netcoreapp2.1\x64\testhost.exe
+C:\Users\lodri\.nuget\packages\microsoft.testplatform.testhost\17.3.2\build\netcoreapp2.1\x64\testhost.dll
+C:\Users\lodri\.nuget\packages\xunit.runner.visualstudio\2.4.5\build\netcoreapp3.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\lodri\.nuget\packages\xunit.runner.visualstudio\2.4.5\build\netcoreapp3.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\lodri\.nuget\packages\xunit.runner.visualstudio\2.4.5\build\netcoreapp3.1\xunit.runner.utility.netcoreapp10.dll
+D:\source\ContentSecurityPolicies\test\AspNetCore.Hosting.ContentSecurityPolicies.Test\Properties\launchSettings.json
