@@ -42,6 +42,6 @@
         /// <summary>
         /// Allows the embedded browsing context to navigate (load) content to the top-level browsing context. If this keyword is not used, this operation is not allowed.
         /// </summary>
-        public static AllowTopNaviation AllowTopNaviation { get; set; } = new AllowTopNaviation();
+        public static AllowTopNavigation AllowTopNavigation { get; set; } = new AllowTopNavigation();
     }
 }

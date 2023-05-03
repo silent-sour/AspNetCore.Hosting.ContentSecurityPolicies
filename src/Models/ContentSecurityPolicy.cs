@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Models
 {
+    /// <summary>
+    /// The base class for a Content Security Policy
+    /// </summary>
     public class ContentSecurityPolicy
     {
         /// <summary>
@@ -105,7 +108,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Models
         /// similar to the <iframe> sandbox attribute. It applies restrictions to a page's actions including 
         /// preventing popups, preventing the execution of plugins and scripts, and enforcing a same-origin policy.
         /// </summary>
-        public BaseSandboxOption? Sandbox { get; set; }
+        public SandboxOption? Sandbox { get; set; }
 
         /// <summary>
         /// The HTTP Content-Security-Policy (CSP) upgrade-insecure-requests directive instructs user agents to 

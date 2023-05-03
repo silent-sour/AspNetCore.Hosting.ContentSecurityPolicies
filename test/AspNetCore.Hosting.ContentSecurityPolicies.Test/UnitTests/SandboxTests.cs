@@ -24,13 +24,10 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             TestSandbox(SandboxOptions.AllowPresentation);
             TestSandbox(SandboxOptions.AllowSameOrigin);
             TestSandbox(SandboxOptions.AllowScripts);
-            TestSandbox(SandboxOptions.AllowTopNaviation);
-            var unionSandboxType = SandboxOptions.AllowPopups;
-            unionSandboxType.Merge(SandboxOptions.AllowModals);
-            TestSandbox(unionSandboxType);
+            TestSandbox(SandboxOptions.AllowTopNavigation);
         }
 
-        private static void TestSandbox(BaseSandboxOption sandbox)
+        private static void TestSandbox(SandboxOption sandbox)
         {
             ContentSecurityPolicy policy = new() { Sandbox = sandbox };
             Assert.NotNull(policy.Sandbox);
