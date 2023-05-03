@@ -8,8 +8,16 @@ using System.Text;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
 {
+    /// <summary>
+    /// Class for building the Content Security Policy Header string from a policy object
+    /// </summary>
     internal static class ContentSecurityHeaderBuilder
     {
+        /// <summary>
+        /// Builds a building the Content Security Policy Header string from a policy object
+        /// </summary>
+        /// <param name="policy">The policy</param>
+        /// <returns>The header string</returns>
         public static string Build([NotNull] ContentSecurityPolicy policy)
         {
             var stringBuilder = new StringBuilder();

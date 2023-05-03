@@ -6,6 +6,9 @@ using System.Text;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
 {
+    /// <summary>
+    /// Class for building hash-concatenated strings
+    /// </summary>
     public static class PolicyConstantBuilder
     {
         /// <summary>

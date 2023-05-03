@@ -4,6 +4,9 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Logging
 {
+    /// <summary>
+    /// Logger for Add failure
+    /// </summary>
     [ExcludeFromCodeCoverage]
     public static partial class ContentSecurityPolicyLogger
     {

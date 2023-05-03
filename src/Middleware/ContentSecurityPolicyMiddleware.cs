@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Middleware
 {
+    /// <summary>
+    /// Middleware for adding a Content Security Policy header to the ASP.NET pipeline
+    /// </summary>
     public class ContentSecurityPolicyMiddleware
     {
         private readonly RequestDelegate _next;
@@ -26,6 +29,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Middleware
             _logger = logger;
         }
 
+        /// <summary>
+        /// Invokes the middleware asynchronously
+        /// </summary>
+        /// <param name="context">The Http Context</param>
+        /// <returns>A Task in which the header is added to the context</returns>
         public Task InvokeAsync(HttpContext context)
         {
             var added = context.Response.Headers.TryAdd(ContentSecurityPolicyResources.ContentSecurityPolicyHeader, _policyHeader);

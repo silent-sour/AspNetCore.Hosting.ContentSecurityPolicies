@@ -8,6 +8,9 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Extensions
 {
+    /// <summary>
+    /// Extension Method for IApplicationBuilder to add the Content Security Policy Middleware
+    /// </summary>
     public static class ContentSecurityPolicyExtensions
     {
         /// <summary>
