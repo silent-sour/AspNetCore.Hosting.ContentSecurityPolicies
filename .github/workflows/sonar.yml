@@ -30,12 +30,25 @@ jobs:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
+      - name: Cache Report Generator
+        id: cache-report-generator
+        uses: actions/cache@v3
+        with:
+          path: .\.reportgenerator
+          key: ${{ runner.os }}-report-generator
+          restore-keys: ${{ runner.os }}-report-generator
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+      - name: Install Report Generator
+        if: steps.cache-report-generator.outputs.cache-hit != 'true'
+        shell: powershell
+        run: |
+          New-Item -Path .\.reportgenerator -ItemType Directory
+          dotnet tool update dotnet-reportgenerator-globaltool --tool-path .\.reportgenerator
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
@@ -43,5 +56,7 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"lodrial_AspNetCore.Hosting.ContentSecurityPolicies" /o:"lodrial" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet build AspNetCore.Hosting.ContentSecurityPolicies.sln -c Release
+          dotnet build AspNetCore.Hosting.ContentSecurityPolicies.sln --no-restore -c Release
+          dotnet test --collect:"XPlat Code Coverage" --logger "trx" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --no-restore -c Release
+          reportgenerator "-reports:.\test\AspNetCore.Hosting.ContentSecurityPolicies.Test\TestResults\*\coverage.cobertura.xml" "-targetdir:sonarqubecoverage" "-reporttypes:SonarQube" "-classfilters:+*;-*.Pages_Error"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
