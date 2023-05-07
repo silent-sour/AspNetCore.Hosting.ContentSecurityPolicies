@@ -1,9 +1,12 @@
 ﻿using AspNetCore.Hosting.ContentSecurityPolicies.Builders;
 using AspNetCore.Hosting.ContentSecurityPolicies.Extensions;
+using AspNetCore.Hosting.ContentSecurityPolicies.Middleware;
 using AspNetCore.Hosting.ContentSecurityPolicies.Models;
 using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
 
 using Microsoft.AspNetCore.TestHost;
+
+using Moq;
 
 using System.Diagnostics.CodeAnalysis;
 
@@ -65,6 +68,29 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
                         });
                 }).Build();
             await Assert.ThrowsAsync<InvalidOperationException>(async () => await host.StartAsync());
+        }
+
+        [Fact]
+        public async Task InvokeAsync_AddsCspHeaderWithoutSelf()
+        {
+            // Arrange
+            var policy = new ContentSecurityPolicyBuilder()
+                .WithoutDefaultSelf()
+                .BuildPolicy();
+            var middleware = new ContentSecurityPolicyMiddleware(
+                (innerHttpContext) => Task.CompletedTask,
+                policy,
+                Mock.Of<ILogger<ContentSecurityPolicyMiddleware>>()
+            );
+            var httpContext = new DefaultHttpContext();
+            httpContext.Response.Headers.Clear();
+
+            // Act
+            await middleware.InvokeAsync(httpContext);
+
+            // Assert
+            Assert.True(httpContext.Response.Headers.ContainsKey("Content-Security-Policy"));
+            Assert.Equal(ContentSecurityHeaderBuilder.Build(policy), httpContext.Response.Headers["Content-Security-Policy"]);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             response.Setup(r => r.Headers).Returns(new HeaderDictionary());
             context.Setup(c => c.Response).Returns(response.Object);
             await middlware.InvokeAsync(context.Object);
-            await middlware.InvokeAsync(context.Object);
+            await Assert.ThrowsAsync<InvalidOperationException>(async () => await middlware.InvokeAsync(context.Object));
         }
 
         [Fact]

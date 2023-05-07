@@ -44,6 +44,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
             return stringBuilder.ToString().TrimEnd();
         }
 
+        /// <summary>
+        /// Adds the Upgrade-Insecure-Requests directive to the header if the policy has it enabled.
+        /// </summary>
+        /// <param name="stringBuilder">The StringBuilder to which the directive will be appended.</param>
+        /// <param name="policy">The policy object.</param>
         private static void TryUpgradeInsecureRequests([NotNull] StringBuilder stringBuilder, [NotNull] ContentSecurityPolicy policy)
         {
             if (policy.UpgradeInsecureRequests)
@@ -52,6 +57,12 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
             }
         }
 
+        /// <summary>
+        /// Appends a source expression to the header string for the given directive and policy source.
+        /// </summary>
+        /// <param name="stringBuilder">The StringBuilder to which the source expression will be appended.</param>
+        /// <param name="policySource">The policy source for the directive.</param>
+        /// <param name="cspHeaderValue">The header value for the directive.</param>
         private static void TryAddPolicySource([NotNull] StringBuilder stringBuilder, [NotNull] HashSet<string> policySource, [NotNull] string cspHeaderValue)
         {
             if (policySource.Count > 0)
@@ -60,6 +71,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
             }
         }
 
+        /// <summary>
+        /// Appends a sandbox flags expression to the header string if the policy has a sandbox directive.
+        /// </summary>
+        /// <param name="stringBuilder">The StringBuilder to which the sandbox expression will be appended.</param>
+        /// <param name="policy">The policy object.</param>
         private static void TryAddSandbox([NotNull] StringBuilder stringBuilder, [NotNull] ContentSecurityPolicy policy)
         {
             if (policy.Sandbox != null)

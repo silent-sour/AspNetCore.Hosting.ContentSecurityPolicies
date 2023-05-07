@@ -14,7 +14,7 @@
 		<PackageIcon>security-icon.png</PackageIcon>
 		<RepositoryUrl>https://github.com/lodrial/AspNetCore.Hosting.ContentSecurityPolicies</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<AssemblyVersion>1.3.0.0</AssemblyVersion>
+		<AssemblyVersion>1.4.0.0</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -26,7 +26,7 @@
 		<PackageTags>Content Security Policy;CSP</PackageTags>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageReleaseNotes>Optimizations and revised sandbox API</PackageReleaseNotes>
+		<PackageReleaseNotes>Added routable policies</PackageReleaseNotes>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<CodeAnalysisRuleSet>..\.sonarlint\lodrial_aspnetcore.hosting.contentsecuritypoliciescsharp.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
@@ -88,6 +88,11 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>ContentSecuritySchemaResources.resx</DependentUpon>
 	  </Compile>
+	  <Compile Update="Resources\ErrorMessages.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>ErrorMessages.resx</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -110,6 +115,10 @@
 	  <EmbeddedResource Update="Resources\ContentSecuritySchemaResources.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	    <LastGenOutput>ContentSecuritySchemaResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\ErrorMessages.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
 

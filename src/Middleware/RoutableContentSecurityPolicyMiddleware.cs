@@ -13,12 +13,14 @@ using System.Threading.Tasks;
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Middleware
 {
     /// <summary>
-    /// Middleware for adding a Content Security Policy header to the ASP.NET pipeline
+    /// Middleware for adding a Content Security Policy header to the ASP.NET pipeline, 
+    /// with the ability to specify a route for which the policy will be applied.
     /// </summary>
-    public class ContentSecurityPolicyMiddleware
+    public class RoutableContentSecurityPolicyMiddleware
     {
+        private readonly string _path;
         private protected readonly RequestDelegate _next;
-        private protected readonly ILogger<ContentSecurityPolicyMiddleware> _logger;
+        private protected readonly ILogger<RoutableContentSecurityPolicyMiddleware> _logger;
         private protected readonly string _policyHeader;
 
         /// <summary>
@@ -26,28 +28,34 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Middleware
         /// </summary>
         /// <param name="next">The request delegate.</param>
         /// <param name="policy">The Content Security Policy to apply.</param>
+        /// <param name="path">The PathString of the route to apply the policy to</param>
         /// <param name="logger">The logger instance.</param>
-        public ContentSecurityPolicyMiddleware(RequestDelegate next,
+        public RoutableContentSecurityPolicyMiddleware(RequestDelegate next,
             ContentSecurityPolicy policy,
-            ILogger<ContentSecurityPolicyMiddleware> logger)
+            PathString path,
+            ILogger<RoutableContentSecurityPolicyMiddleware> logger)
         {
             _policyHeader = ContentSecurityHeaderBuilder.Build(policy);
             _next = next;
             _logger = logger;
+            _path = path;
         }
 
         /// <summary>
         /// Invokes the middleware asynchronously.
         /// </summary>
         /// <param name="context">The HTTP context.</param>
-        /// <returns>A <see cref="Task"/> in which the header is added to the context.</returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
         public Task InvokeAsync(HttpContext context)
         {
-            var added = context.Response.Headers.TryAdd(ContentSecurityPolicyResources.ContentSecurityPolicyHeader, _policyHeader);
-            if (!added)
+            if (context.Request.Path.StartsWithSegments(_path))
             {
-                ContentSecurityPolicyLogger.CouldNotAddResponseHeader(_logger);
-                throw new InvalidOperationException(ErrorMessages.CouldNotAddHeader);
+                var added = context.Response.Headers.TryAdd(ContentSecurityPolicyResources.ContentSecurityPolicyHeader, _policyHeader);
+                if (!added)
+                {
+                    ContentSecurityPolicyLogger.CouldNotAddResponseHeader(_logger);
+                    throw new InvalidOperationException(ErrorMessages.CouldNotAddHeader);
+                }
             }
             return _next.Invoke(context);
         }
