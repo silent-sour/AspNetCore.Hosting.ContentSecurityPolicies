@@ -17,11 +17,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
     [ExcludeFromCodeCoverage]
     public class RoutableContentSecurityPoliciesTests
     {
-        private readonly ITestOutputHelper output;
+        private readonly ITestOutputHelper _output;
 
         public RoutableContentSecurityPoliciesTests(ITestOutputHelper output)
         {
-            this.output = output;
+            this._output = output;
         }
 
 
