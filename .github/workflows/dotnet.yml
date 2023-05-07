@@ -8,10 +8,10 @@ env:
   SOLUTION_NAME: AspNetCore.Hosting.ContentSecurityPolicies.sln
   
 on:
-  
-  workflow_dispatch:
-  push:
-    branches: [ "main"]
+  workflow_run:
+    workflows: ["CodeQL","SonarCloud"]
+    types: [completed] #requested
+    branches: [ main ]
 
 jobs:
   build:
