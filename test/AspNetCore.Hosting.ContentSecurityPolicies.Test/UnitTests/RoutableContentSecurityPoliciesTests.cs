@@ -10,21 +10,11 @@ using Moq;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-using Xunit.Abstractions;
-
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
 {
     [ExcludeFromCodeCoverage]
     public class RoutableContentSecurityPoliciesTests
     {
-        private readonly ITestOutputHelper _output;
-
-        public RoutableContentSecurityPoliciesTests(ITestOutputHelper output)
-        {
-            this._output = output;
-        }
-
-
         [Fact]
         public async Task InvokeAsync_AddsCspHeader_WhenRequestMatchesRoute()
         {
