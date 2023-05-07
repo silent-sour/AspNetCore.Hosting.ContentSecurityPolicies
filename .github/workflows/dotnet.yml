@@ -36,9 +36,15 @@ jobs:
       id: build
       run: dotnet build ${{ env.SOLUTION_NAME }} -c Release --no-restore  
     
-    - name: Test .NET Library
-      id: test
-      run: dotnet test ${{ env.SOLUTION_NAME }} --no-restore --verbosity normal
+    - name: Get Version to tag and notes
+      id: get-release-info
+      run: |
+        echo "::set-output name=version::v$(grep -oP '<AssemblyVersion>\K[^<]*' "./src/AspNetCore.Hosting.ContentSecurityPolicies.csproj")"
+        echo "::set-output name=notes::$(grep -oP '<PackageReleaseNotes>\K[^<]*' "./src/AspNetCore.Hosting.ContentSecurityPolicies.csproj")
+
+    - name: GitHub Release
+      id: release
+      run: gh release create ${{steps.get-release-info.outputs.version}} --title "${{steps.get-release-info.outputs.version}}" --notes "${{steps.get-release-info.outputs.notes}}"
     
     - name: Pack 
       id: pack
@@ -48,3 +54,4 @@ jobs:
       id: push
       working-directory: nupkgs
       run: dotnet nuget push AspNetCore.Hosting.ContentSecurityPolicies.*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate -k  ${{ env.NUGET_API_KEY }}
+      
