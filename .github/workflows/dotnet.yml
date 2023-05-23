@@ -1,4 +1,4 @@
-name: "Build, test, pack, and release to NuGet"
+name: "Build, test, pack, and release to GitHub and NuGet"
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
@@ -10,8 +10,8 @@ env:
 on:
   workflow_run:
     workflows: ["CodeQL","SonarCloud"]
-    types: [completed] #requested
-    branches: [ main ]
+    types: [completed]
+    branches: [main]
 
 jobs:
   build:
