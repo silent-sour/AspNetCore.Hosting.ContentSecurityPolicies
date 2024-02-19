@@ -120,6 +120,9 @@
   <data name="CouldNotAddHeader" xml:space="preserve">
     <value>Could not add header 'Content-Security-Policy'</value>
   </data>
+  <data name="InvalidReportOnlyPolicy" xml:space="preserve">
+    <value>Invalid empty Report To in ReportOnlyContentSecurityPolicy</value>
+  </data>
   <data name="MiddlewareAlreadyAdded" xml:space="preserve">
     <value>Content Security Policy Middleware has already been added.</value>
   </data>

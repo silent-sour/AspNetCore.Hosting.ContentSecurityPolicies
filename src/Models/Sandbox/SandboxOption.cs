@@ -3,12 +3,10 @@
     /// <summary>
     /// Base class for sandbox options
     /// </summary>
-    public class SandboxOption
+    public class SandboxOption(string option)
     {
-        public SandboxOption(string option)
-        {
-            Value = option;
-        }
-        public string Value { get; internal set; }
+#pragma warning disable S3604 // Member initializer values should not be redundant
+        public string Value { get; internal set; } = option;
+#pragma warning restore S3604 // Member initializer values should not be redundant
     }
 }

@@ -70,6 +70,15 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid empty Report To in ReportOnlyContentSecurityPolicy.
+        /// </summary>
+        internal static string InvalidReportOnlyPolicy {
+            get {
+                return ResourceManager.GetString("InvalidReportOnlyPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Content Security Policy Middleware has already been added..
         /// </summary>
         internal static string MiddlewareAlreadyAdded {

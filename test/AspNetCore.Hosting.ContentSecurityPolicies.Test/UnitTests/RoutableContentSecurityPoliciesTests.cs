@@ -38,7 +38,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
 
             // Assert
             Assert.True(httpContext.Response.Headers.ContainsKey("Content-Security-Policy"));
-            Assert.Equal(ContentSecurityHeaderBuilder.Build(policy), httpContext.Response.Headers["Content-Security-Policy"]);
+            Assert.Equal(ContentSecurityHeaderBuilder.Build(policy), httpContext.Response.Headers.ContentSecurityPolicy);
         }
 
         [Fact]

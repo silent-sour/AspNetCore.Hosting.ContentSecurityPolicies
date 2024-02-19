@@ -6,6 +6,7 @@ using BenchmarkDotNet.Attributes;
 
 using System.Diagnostics.CodeAnalysis;
 
+#pragma warning disable CA1822 // Mark members as static
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.Benchmarks
 {
     public class CspBenchmark
@@ -17,7 +18,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.Benchmarks
 
         [Benchmark]
         [ExcludeFromCodeCoverage]
-        public static string DefaultSelfPolicy()
+        public string DefaultSelfPolicy()
         {
             ContentSecurityPolicy policy = new() { DefaultSrc = { ContentSecuritySchemaResources.Self } };
             var header = ContentSecurityHeaderBuilderTests.BuildHeader(policy);
@@ -26,7 +27,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.Benchmarks
 
         [Benchmark]
         [ExcludeFromCodeCoverage]
-        public static string ScriptSrcSelfPolicy()
+        public string ScriptSrcSelfPolicy()
         {
             ContentSecurityPolicy policy = new() { ScriptSrc = { ContentSecuritySchemaResources.Self } };
             var header = ContentSecurityHeaderBuilderTests.BuildHeader(policy);
@@ -35,7 +36,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.Benchmarks
 
         [Benchmark]
         [ExcludeFromCodeCoverage]
-        public static string DefaultAndScriptSelfPolicy()
+        public string DefaultAndScriptSelfPolicy()
         {
             ContentSecurityPolicy policy = new() { DefaultSrc = { ContentSecuritySchemaResources.Self }, ScriptSrc = { ContentSecuritySchemaResources.Self } };
             var header = ContentSecurityHeaderBuilderTests.BuildHeader(policy);

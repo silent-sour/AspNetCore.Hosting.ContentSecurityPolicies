@@ -41,7 +41,21 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
             TryAddPolicySource(stringBuilder, policy.WorkerSrc, ContentSecurityDirectiveResources.WorkerSource);
             TryAddSandbox(stringBuilder, policy);
             TryUpgradeInsecureRequests(stringBuilder, policy);
+            TryAddReportTo(stringBuilder, policy);
             return stringBuilder.ToString().TrimEnd();
+        }
+
+        /// <summary>
+        /// Adds the report-to directive to the header if the policy has it enabled.
+        /// </summary>
+        /// <param name="stringBuilder">The StringBuilder to which the directive will be appended.</param>
+        /// <param name="policy">The policy object.</param>
+        private static void TryAddReportTo(StringBuilder stringBuilder, ContentSecurityPolicy policy)
+        {
+            if (!string.IsNullOrEmpty(policy.ReportTo))
+            {
+                stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "{0}; ", ContentSecurityDirectiveResources.ReportTo);
+            }
         }
 
         /// <summary>

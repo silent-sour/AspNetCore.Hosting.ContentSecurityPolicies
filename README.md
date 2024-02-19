@@ -1,11 +1,11 @@
 # AspNetCore.Hosting.ContentSecurityPolicies
 ASP.NET Content Security Middleware
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=lodrial_AspNetCore.Hosting.ContentSecurityPolicies&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=lodrial_AspNetCore.Hosting.ContentSecurityPolicies)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=lodrial_AspNetCore.Hosting.ContentSecurityPolicies&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=lodrial_AspNetCore.Hosting.ContentSecurityPolicies)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=lodrial_AspNetCore.Hosting.ContentSecurityPolicies&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=lodrial_AspNetCore.Hosting.ContentSecurityPolicies)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=lodrial_AspNetCore.Hosting.ContentSecurityPolicies&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=lodrial_AspNetCore.Hosting.ContentSecurityPolicies)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=lodrial_AspNetCore.Hosting.ContentSecurityPolicies&metric=coverage)](https://sonarcloud.io/summary/new_code?id=lodrial_AspNetCore.Hosting.ContentSecurityPolicies)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=silent-sour_AspNetCore.Hosting.ContentSecurityPolicies&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=silent-sour_AspNetCore.Hosting.ContentSecurityPolicies)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=silent-sour_AspNetCore.Hosting.ContentSecurityPolicies&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=silent-sour_AspNetCore.Hosting.ContentSecurityPolicies)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=silent-sour_AspNetCore.Hosting.ContentSecurityPolicies&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=silent-sour_AspNetCore.Hosting.ContentSecurityPolicies)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=silent-sour_AspNetCore.Hosting.ContentSecurityPolicies&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=silent-sour_AspNetCore.Hosting.ContentSecurityPolicies)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=silent-sour_AspNetCore.Hosting.ContentSecurityPolicies&metric=coverage)](https://sonarcloud.io/summary/new_code?id=silent-sour_AspNetCore.Hosting.ContentSecurityPolicies)
 
 An easy middlware for instituting a Content Security Policy header in the ASP.NET pipeline
 

@@ -5,6 +5,7 @@ using AspNetCore.Hosting.ContentSecurityPolicies.Models;
 using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
 
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.Net.Http.Headers;
 
 using Moq;
 
@@ -47,7 +48,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             Assert.Single(response.Headers);
 
             var expected = ContentSecurityHeaderBuilder.Build(currentPolicy);
-            Assert.Equal(expected, response.Headers.GetValues(ContentSecurityPolicyResources.ContentSecurityPolicyHeader).Single());
+            Assert.Equal(expected, response.Headers.GetValues(HeaderNames.ContentSecurityPolicy).Single());
 
             host = new HostBuilder()
                 .ConfigureWebHost(webHostBuilder =>
@@ -60,7 +61,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
                             {
                                 policyBuilder.WithDefaultSource(ContentSecuritySchemaResources.None);
                             });
-                            app.UseContentSecurityPolicy(builder => builder.WithDefaultSource(currentPolicy.DefaultSrc.ToArray()));
+                            app.UseContentSecurityPolicy(builder => builder.WithDefaultSource([.. currentPolicy.DefaultSrc]));
                             app.Run(async context =>
                             {
                                 await context.Response.WriteAsync("CSP response");
@@ -90,7 +91,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
 
             // Assert
             Assert.True(httpContext.Response.Headers.ContainsKey("Content-Security-Policy"));
-            Assert.Equal(ContentSecurityHeaderBuilder.Build(policy), httpContext.Response.Headers["Content-Security-Policy"]);
+            Assert.Equal(ContentSecurityHeaderBuilder.Build(policy), httpContext.Response.Headers.ContentSecurityPolicy);
         }
     }
 }

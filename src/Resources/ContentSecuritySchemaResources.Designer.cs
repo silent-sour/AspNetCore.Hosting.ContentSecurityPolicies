@@ -152,11 +152,29 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;unsafe-hashes&apos;.
+        /// </summary>
+        public static string UnsafeHashes {
+            get {
+                return ResourceManager.GetString("UnsafeHashes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;unsafe-inline&apos;.
         /// </summary>
         public static string UnsafeInline {
             get {
                 return ResourceManager.GetString("UnsafeInline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;wasm-unsafe-eval&apos;.
+        /// </summary>
+        public static string WebAssemblyUnsafeEval {
+            get {
+                return ResourceManager.GetString("WebAssemblyUnsafeEval", resourceCulture);
             }
         }
     }

@@ -2,19 +2,14 @@
 
   <PropertyGroup>
 	<OutputType>Exe</OutputType>
-	<TargetFramework>net6.0</TargetFramework>
+	<TargetFrameworks>net8.0</TargetFrameworks>
 	<ImplicitUsings>enable</ImplicitUsings>
 	<Nullable>enable</Nullable>
 	<IsPackable>false</IsPackable>
-	<CodeAnalysisRuleSet>..\..\.sonarlint\lodrial_aspnetcore.hosting.contentsecuritypoliciescsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="..\..\.sonarlint\lodrial_aspnetcore.hosting.contentsecuritypolicies\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-	<PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
+	<PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
   </ItemGroup>
 
   <ItemGroup>

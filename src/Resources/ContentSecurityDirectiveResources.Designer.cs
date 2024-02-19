@@ -170,6 +170,15 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to report-to.
+        /// </summary>
+        public static string ReportTo {
+            get {
+                return ResourceManager.GetString("ReportTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sandbox.
         /// </summary>
         public static string Sandbox {

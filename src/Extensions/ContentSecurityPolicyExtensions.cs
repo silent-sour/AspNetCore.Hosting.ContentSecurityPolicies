@@ -78,6 +78,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Extensions
         internal static void ResetMiddlewareAdded()
         {
             _middlewareAdded = false;
+
         }
     }
 }

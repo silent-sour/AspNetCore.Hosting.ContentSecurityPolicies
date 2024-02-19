@@ -153,6 +153,9 @@
   <data name="ObjectSrc" xml:space="preserve">
     <value>object-src</value>
   </data>
+  <data name="ReportTo" xml:space="preserve">
+    <value>report-to</value>
+  </data>
   <data name="Sandbox" xml:space="preserve">
     <value>sandbox</value>
   </data>

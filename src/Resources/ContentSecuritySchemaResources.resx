@@ -147,7 +147,13 @@
   <data name="UnsafeEval" xml:space="preserve">
     <value>'unsafe-eval'</value>
   </data>
+  <data name="UnsafeHashes" xml:space="preserve">
+    <value>'unsafe-hashes'</value>
+  </data>
   <data name="UnsafeInline" xml:space="preserve">
     <value>'unsafe-inline'</value>
+  </data>
+  <data name="WebAssemblyUnsafeEval" xml:space="preserve">
+    <value>'wasm-unsafe-eval'</value>
   </data>
 </root>

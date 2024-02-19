@@ -9,24 +9,24 @@ jobs:
     name: Build and analyze
     runs-on: windows-latest
     steps:
-      - name: Set up JDK 11
-        uses: actions/setup-java@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
         with:
-          java-version: 11
-          distribution: 'zulu' # Alternative distribution options are available.
-      - uses: actions/checkout@v3
+          java-version: 17
+          distribution: 'temurin' # Alternative distribution options are available.
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Cache SonarCloud scanner
         id: cache-sonar-scanner
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
       - name: Cache Dotnet Coverage
         id: cache-dotnet-coverage
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .\.coverage
           key: ${{ runner.os }}-dotnet-coverage
@@ -49,7 +49,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"lodrial_AspNetCore.Hosting.ContentSecurityPolicies" /o:"lodrial" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"silent-sour_AspNetCore.Hosting.ContentSecurityPolicies" /o:"silent-sour" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
           dotnet restore AspNetCore.Hosting.ContentSecurityPolicies.sln
           dotnet build AspNetCore.Hosting.ContentSecurityPolicies.sln -c Release --no-restore
           .\.coverage\dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"

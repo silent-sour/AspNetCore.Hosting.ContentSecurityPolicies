@@ -1,8 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
+<Project Sdk="Microsoft.NET.Sdk.Web">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0</TargetFrameworks>
-		<ImplicitUsings>enable</ImplicitUsings>
+		<TargetFrameworks>.net8.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -12,9 +10,9 @@
 		<Copyright>©2023 Annabelle Horch</Copyright>
 		<PackageProjectUrl></PackageProjectUrl>
 		<PackageIcon>security-icon.png</PackageIcon>
-		<RepositoryUrl>https://github.com/lodrial/AspNetCore.Hosting.ContentSecurityPolicies</RepositoryUrl>
+		<RepositoryUrl>https://github.com/silent-sour/AspNetCore.Hosting.ContentSecurityPolicies</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<AssemblyVersion>1.5.0.0</AssemblyVersion>
+		<AssemblyVersion>2.0.0.0</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -26,18 +24,19 @@
 		<PackageTags>Content Security Policy;CSP</PackageTags>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageReleaseNotes>Added routable policies</PackageReleaseNotes>
+		<PackageReleaseNotes>Migrated to .net 8 as primary target</PackageReleaseNotes>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<CodeAnalysisRuleSet>..\.sonarlint\lodrial_aspnetcore.hosting.contentsecuritypoliciescsharp.ruleset</CodeAnalysisRuleSet>
 		<OutputType>Library</OutputType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|.net8.0|AnyCPU'">
+	  <NoWarn>1701;1702;S3604</NoWarn>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|.net8.0|AnyCPU'">
+	  <NoWarn>1701;1702;S3604</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Remove="Resources\security-icon.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <AdditionalFiles Include="..\.sonarlint\lodrial_aspnetcore.hosting.contentsecuritypolicies\CSharp\SonarLint.xml" Link="SonarLint.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -59,11 +58,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Resources\ContentSecurityPolicyResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>ContentSecurityPolicyResources.resx</DependentUpon>
-	  </Compile>
 	  <Compile Update="Resources\ContentSecuritySandboxResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
@@ -92,10 +86,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Resources\ContentSecurityPolicyResources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>ContentSecurityPolicyResources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
 	  <EmbeddedResource Update="Resources\ContentSecuritySandboxResources.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>ContentSecuritySandboxResources.Designer.cs</LastGenOutput>
