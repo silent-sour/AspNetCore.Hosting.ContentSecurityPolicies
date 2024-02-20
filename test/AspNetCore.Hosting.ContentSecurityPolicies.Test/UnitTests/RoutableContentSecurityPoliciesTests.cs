@@ -1,13 +1,10 @@
-﻿using AspNetCore.Hosting.ContentSecurityPolicies.Builders;
-using AspNetCore.Hosting.ContentSecurityPolicies.Extensions;
+﻿using AspNetCore.Hosting.ContentSecurityPolicies.Extensions;
 using AspNetCore.Hosting.ContentSecurityPolicies.Middleware;
-using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
 
 using Microsoft.AspNetCore.TestHost;
 
 using Moq;
 
-using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests

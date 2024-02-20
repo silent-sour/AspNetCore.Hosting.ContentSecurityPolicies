@@ -1,15 +1,9 @@
-using AspNetCore.Hosting.ContentSecurityPolicies.Builders;
-using AspNetCore.Hosting.ContentSecurityPolicies.Models;
-using AspNetCore.Hosting.ContentSecurityPolicies.Models.Sandbox;
-using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
-
-using System.Diagnostics.CodeAnalysis;
-
 namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
 {
     [ExcludeFromCodeCoverage]
     public class ContentSecurityHeaderBuilderTests
     {
+        private const string TestReportUri = "/report-uri";
 
         [Fact]
         public void TestBuildEmpty()
@@ -96,6 +90,15 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             Assert.NotNull(policy.Sandbox);
             var header = BuildHeader(policy);
             Assert.Contains($"{ContentSecurityDirectiveResources.Sandbox} {policy.Sandbox.Value};", header);
+        }
+
+        [Fact]
+        public void TestReportTo()
+        {
+            ContentSecurityPolicy policy = new() { ReportTo = TestReportUri };
+            Assert.NotNull(policy.ReportTo);
+            var header = BuildHeader(policy);
+            Assert.Contains($"{ContentSecurityDirectiveResources.ReportTo} {policy.ReportTo};", header);
         }
 
         public static string BuildHeader(ContentSecurityPolicy policy)

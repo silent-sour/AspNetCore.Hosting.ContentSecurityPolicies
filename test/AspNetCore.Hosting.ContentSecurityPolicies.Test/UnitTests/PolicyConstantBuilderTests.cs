@@ -1,9 +1,4 @@
-﻿using AspNetCore.Hosting.ContentSecurityPolicies.Builders;
-using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
-
-using System.Diagnostics.CodeAnalysis;
-
-namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
+﻿namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
 {
     [ExcludeFromCodeCoverage]
     public class PolicyConstantBuilderTests

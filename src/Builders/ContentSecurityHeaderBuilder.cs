@@ -54,7 +54,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         {
             if (!string.IsNullOrEmpty(policy.ReportTo))
             {
-                stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "{0}; ", ContentSecurityDirectiveResources.ReportTo);
+                stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "{0} {1}; ", ContentSecurityDirectiveResources.ReportTo, policy.ReportTo);
             }
         }
 
