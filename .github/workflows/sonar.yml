@@ -50,7 +50,7 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"silent-sour_AspNetCore.Hosting.ContentSecurityPolicies" /o:"silent-sour" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-          dotnet restore AspNetCore.Hosting.ContentSecurityPolicies.sln
+          dotnet restore AspNetCore.Hosting.ContentSecurityPolicies.sln --locked-mode
           dotnet build AspNetCore.Hosting.ContentSecurityPolicies.sln -c Release --no-restore
           .\.coverage\dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"

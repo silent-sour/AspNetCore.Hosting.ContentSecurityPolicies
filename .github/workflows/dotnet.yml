@@ -26,11 +26,10 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-        cache: true
         
     - name: Install dependencies
       id: restore
-      run: dotnet restore ${{ env.SOLUTION_NAME }}
+      run: dotnet restore ${{ env.SOLUTION_NAME }} --locked-mode
         
     - name: Build .NET Library
       id: build
