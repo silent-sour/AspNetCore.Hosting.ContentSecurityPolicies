@@ -233,6 +233,12 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
             return this;
         }
 
+        public ContentSecurityPolicyBuilder WithReportTo(string reportUri)
+        {
+            Policy.ReportTo = reportUri;
+            return this;
+        }
+
         /// <summary>
         /// Builds the policy
         /// </summary>

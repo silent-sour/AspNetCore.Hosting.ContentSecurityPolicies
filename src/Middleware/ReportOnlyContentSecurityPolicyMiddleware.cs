@@ -28,7 +28,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Middleware
     {
         private protected readonly RequestDelegate _next = next;
         private protected readonly ILogger<ReportOnlyContentSecurityPolicyMiddleware> _logger = logger;
-        private protected readonly string _policyHeader = ContentSecurityHeaderBuilder.Build(policy);
+        private protected readonly string _policyHeader = ContentSecurityHeaderBuilder.Build(policy, true);
 
         /// <summary>
         /// Invokes the middleware asynchronously.
@@ -37,7 +37,6 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Middleware
         /// <returns>A <see cref="Task"/> in which the header is added to the context.</returns>
         public Task InvokeAsync(HttpContext context)
         {
-            if (policy.ReportTo == string.Empty) throw new InvalidOperationException(ErrorMessages.InvalidReportOnlyPolicy);
             var added = context.Response.Headers.TryAdd(HeaderNames.ContentSecurityPolicyReportOnly, _policyHeader);
             if (!added)
             {

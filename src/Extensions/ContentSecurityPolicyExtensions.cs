@@ -44,6 +44,32 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Extensions
         }
 
         /// <summary>
+        /// Adds a Content Security Policy Middleware to the pipeline with the specified policy configuration.
+        /// </summary>
+        /// <param name="app">The <see cref="IApplicationBuilder"/> instance.</param>
+        /// <param name="configurePolicy">A delegate that configures the <see cref="ContentSecurityPolicyBuilder"/>.</param>
+        /// <returns>The <see cref="IApplicationBuilder"/> instance.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if the middleware has already been added to the pipeline.</exception>
+
+        public static IApplicationBuilder UseReportOnlyContentSecurityPolicy(
+            [NotNull] this IApplicationBuilder app,
+            [NotNull] string reportTo,
+            Action<ContentSecurityPolicyBuilder>? configurePolicy = null)
+        {
+            if (_middlewareAdded)
+            {
+                throw new InvalidOperationException(ErrorMessages.MiddlewareAlreadyAdded);
+            }
+            _middlewareAdded = true;
+            var builder = new ContentSecurityPolicyBuilder(new()
+            {
+                ReportTo = reportTo
+            });
+            configurePolicy?.Invoke(builder);
+            return app.UseMiddleware<ReportOnlyContentSecurityPolicyMiddleware>(builder.BuildPolicy());
+        }
+
+        /// <summary>
         /// Adds a route-specific Content Security Policy Middleware to the pipeline with the specified policy configuration.
         /// </summary>
         /// <param name="app">The <see cref="IApplicationBuilder"/> instance.</param>

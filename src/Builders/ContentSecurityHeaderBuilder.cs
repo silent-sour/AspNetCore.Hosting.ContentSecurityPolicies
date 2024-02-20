@@ -1,6 +1,7 @@
 ﻿using AspNetCore.Hosting.ContentSecurityPolicies.Models;
 using AspNetCore.Hosting.ContentSecurityPolicies.Resources;
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -18,7 +19,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
         /// </summary>
         /// <param name="policy">The policy</param>
         /// <returns>The header string</returns>
-        public static string Build([NotNull] ContentSecurityPolicy policy)
+        public static string Build([NotNull] ContentSecurityPolicy policy, bool requireReportTo = false)
         {
             var stringBuilder = new StringBuilder();
             TryAddPolicySource(stringBuilder, policy.DefaultSrc, ContentSecurityDirectiveResources.DefaultSrc);
@@ -41,7 +42,10 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Builders
             TryAddPolicySource(stringBuilder, policy.WorkerSrc, ContentSecurityDirectiveResources.WorkerSource);
             TryAddSandbox(stringBuilder, policy);
             TryUpgradeInsecureRequests(stringBuilder, policy);
-            TryAddReportTo(stringBuilder, policy);
+            if (requireReportTo && string.IsNullOrEmpty(policy.ReportTo))
+                throw new InvalidOperationException(ErrorMessages.InvalidReportOnlyPolicy);
+            else
+                TryAddReportTo(stringBuilder, policy);
             return stringBuilder.ToString().TrimEnd();
         }
 

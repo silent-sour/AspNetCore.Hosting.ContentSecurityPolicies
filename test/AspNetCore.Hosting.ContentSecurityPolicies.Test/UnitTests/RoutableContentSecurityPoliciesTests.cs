@@ -2,6 +2,7 @@
 using AspNetCore.Hosting.ContentSecurityPolicies.Middleware;
 
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.Net.Http.Headers;
 
 using Moq;
 
@@ -60,7 +61,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             await middleware.InvokeAsync(httpContext);
 
             // Assert
-            Assert.False(httpContext.Response.Headers.ContainsKey("Content-Security-Policy"));
+            Assert.False(httpContext.Response.Headers.ContainsKey(HeaderNames.ContentSecurityPolicy));
         }
 
         [Fact]
@@ -88,7 +89,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
         }
 
         [Fact]
-        public void TestRouteBuilderPattern()
+        public async Task TestRouteBuilderPattern()
         {
             var host = Mock.Of<HostBuilder>()
                 .ConfigureWebHost(webHostBuilder =>
@@ -111,11 +112,11 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
                             });
                         });
                 }).Build();
-            host.Start();
+            await host.StartAsync();
             Assert.NotNull(host);
 
             using var server = host.GetTestServer();
-            var response = server.CreateRequest("/index.html").SendAsync("GET").Result;
+            var response = await server.CreateRequest("/index.html").SendAsync("GET");
             response.EnsureSuccessStatusCode();
             Assert.Single(response.Headers);
             var header = response.Headers.First();
@@ -145,7 +146,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
                             });
                         });
                 }).Build();
-            Assert.Throws<InvalidOperationException>(() => host.Start());
+            await Assert.ThrowsAsync<InvalidOperationException>(async () => await host.StartAsync());
         }
     }
 }

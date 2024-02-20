@@ -25,7 +25,9 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
 
                             app.UseContentSecurityPolicy(policy =>
                             {
-                                policy.WithDefaultSource(ContentSecuritySchemaResources.None);
+                                policy
+                                    .WithDefaultSource(ContentSecuritySchemaResources.None)
+                                    .WithReportTo("/report-uri");
                                 currentPolicy = policy.BuildPolicy();
                             });
                             app.Run(async context =>
@@ -85,7 +87,7 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Test.UnitTests
             await middleware.InvokeAsync(httpContext);
 
             // Assert
-            Assert.True(httpContext.Response.Headers.ContainsKey("Content-Security-Policy"));
+            Assert.True(httpContext.Response.Headers.ContainsKey(HeaderNames.ContentSecurityPolicy));
             Assert.Equal(ContentSecurityHeaderBuilder.Build(policy), httpContext.Response.Headers.ContentSecurityPolicy);
         }
     }

@@ -6,18 +6,20 @@ namespace AspNetCore.Hosting.ContentSecurityPolicies.Models.Violations
     {
         [JsonPropertyName("blocked-uri")]
         public required string BlockedUri { get; set; }
-        public required string Disposition { get; set; }
+        [JsonPropertyName("disposition")]
+        public string Disposition { get; set; } = string.Empty;
         [JsonPropertyName("document-uri")]
         public required string DocumentUri { get; set; }
         [JsonPropertyName("effective-directive")]
-        public required string EffectiveDirective { get; set; }
+        public string EffectiveDirective { get; set; } = string.Empty;
         [JsonPropertyName("original-policy")]
         public required string OriginalPolicy { get; set; }
-        public required string Referrer { get; set; }
+        [JsonPropertyName("referrer")]
+        public string Referrer { get; set; } = string.Empty;
         [JsonPropertyName("script-sample")]
-        public string? ScriptSample { get; set; }
+        public string ScriptSample { get; set; } = string.Empty;
         [JsonPropertyName("status-code")]
-        public required string StatusCode { get; set; }
+        public required byte StatusCode { get; set; }
         [JsonPropertyName("violated-directive")]
         public string ViolatedDirective { get; set; } = string.Empty;
     }
