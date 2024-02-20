@@ -8,10 +8,9 @@ env:
   SOLUTION_NAME: AspNetCore.Hosting.ContentSecurityPolicies.sln
   
 on:
-  workflow_run:
-    workflows: ["CodeQL","SonarCloud"]
-    types: [completed]
-    branches: [main]
+  push:
+    branches: [ "main" ]
+
 
 jobs:
   build:
@@ -20,13 +19,14 @@ jobs:
     steps:
     - name: "Checkout source"
       id: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       
     - name: Setup .NET
       id: setup
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+        cache: true
         
     - name: Install dependencies
       id: restore
