@@ -35,17 +35,15 @@ jobs:
       id: build
       run: dotnet build ${{ env.SOLUTION_NAME }} -c Release --no-restore  
     
-    - name: Get Version to tag and notes
-      id: get-release-info
-      run: |
-        echo "{version}={$(grep -oP '<AssemblyVersion>\K[^<]*' "./src/AspNetCore.Hosting.ContentSecurityPolicies.csproj")}") >> "$GITHUB_ENV"
-        echo "{notes}={$(grep -oP '<PackageReleaseNotes>\K[^<]*' "./src/AspNetCore.Hosting.ContentSecurityPolicies.csproj")}") >> "$GITHUB_ENV"
-        # echo "::set-output name=version::v$(grep -oP '<AssemblyVersion>\K[^<]*' "./src/AspNetCore.Hosting.ContentSecurityPolicies.csproj")"
-        # echo "::set-output name=notes::$(grep -oP '<PackageReleaseNotes>\K[^<]*' "./src/AspNetCore.Hosting.ContentSecurityPolicies.csproj")
+    # - name: Get Version to tag and notes
+    #   id: get-release-info
+    #   run: |
+    #     echo "{version}={$(grep -oP '<AssemblyVersion>\K[^<]*' "./src/AspNetCore.Hosting.ContentSecurityPolicies.csproj")}") >> "$GITHUB_ENV"
+    #     echo "{notes}={$(grep -oP '<PackageReleaseNotes>\K[^<]*' "./src/AspNetCore.Hosting.ContentSecurityPolicies.csproj")}") >> "$GITHUB_ENV"
 
-    - name: GitHub Release
-      id: release
-      run: gh release create ${{steps.get-release-info.outputs.version}} --title "${{steps.get-release-info.outputs.version}}" --notes "${{steps.get-release-info.outputs.notes}}"
+    # - name: GitHub Release
+    #   id: release
+    #   run: gh release create ${{steps.get-release-info.outputs.version}} --title "${{steps.get-release-info.outputs.version}}" --notes "${{steps.get-release-info.outputs.notes}}"
     
     - name: Pack 
       id: pack
